@@ -1,0 +1,128 @@
+==== Exception State ====
+SWC ID: 110
+Severity: Low
+Contract: Map
+Function name: set(uint256,uint256)
+PC address: 381
+Estimated Gas Usage: 7769 - 27864
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values). This issue is reported for internal compiler generated code.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: set(uint256,uint256), txdata: 0x1ab06ee5ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Write to an arbitrary storage location ====
+SWC ID: 124
+Severity: High
+Contract: Map
+Function name: set(uint256,uint256)
+PC address: 395
+Estimated Gas Usage: 12845 - 53035
+The caller can write to arbitrary storage locations.
+It is possible to write to arbitrary storage locations. By modifying the values of storage variables, attackers may bypass security controls or manipulate the business logic of the smart contract.
+--------------------
+In file: dataset\mapping_write.sol:20
+
+map[key] = value
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: set(uint256,uint256), txdata: 0x1ab06ee54ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd2603468cc846125, value: 0x0
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: Map
+Function name: withdraw()
+PC address: 562
+Estimated Gas Usage: 2542 - 37153
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+In file: dataset\mapping_write.sol:28
+
+msg.sender.transfer(address(this).balance)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: set(uint256,uint256), txdata: 0x1ab06ee54ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30aadadadadadadadadadadadaddeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: (35707666377435648211887908874984608119992236509074197713628505308453184860938, 78556986031590987483442276104213106986950869664862860515843040873257070608111), value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Map
+Function name: withdraw()
+PC address: 562
+Estimated Gas Usage: 2542 - 37153
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+In file: dataset\mapping_write.sol:28
+
+msg.sender.transfer(address(this).balance)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: set(uint256,uint256), txdata: 0x1ab06ee5, value: 0x0
+Caller: [CREATOR], function: set(uint256,uint256), txdata: 0x1ab06ee54ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a000000020000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: (35707666377435648211887908874984608119992236509074197713628505308453184860938, 53919893334301279590605300787039303003091737193213420851274114252527), value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Map
+Function name: get(uint256)
+PC address: 640
+Estimated Gas Usage: 1083 - 1178
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: dataset\mapping_write.sol:23
+
+function get(uint256 key) public view returns (uint256) {
+
+         return map[key];
+
+     }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: get(uint256), txdata: 0x9507d39a, value: 0x0
+
+

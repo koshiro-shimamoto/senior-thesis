@@ -1,0 +1,83 @@
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: Wallet
+Function name: withdraw(uint256)
+PC address: 340
+Estimated Gas Usage: 7840 - 62501
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+In file: dataset\wallet_04_confused_sign.sol:31
+
+msg.sender.transfer(amount)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x400000000020, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: withdraw(uint256), txdata: 0x2e1a7d4d, value: 0x0
+Caller: [ATTACKER], function: withdraw(uint256), txdata: 0x2e1a7d4d000000000000000000000000000000000000000000000001, decoded_data: (18446744073709551616,), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: Wallet
+Function name: withdraw(uint256)
+PC address: 433
+Estimated Gas Usage: 7840 - 62501
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: dataset\wallet_04_confused_sign.sol:32
+
+balances[msg.sender] -= amount
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: withdraw(uint256), txdata: 0x2e1a7d4d000000000000000000000000000000000000000000000002, decoded_data: (36893488147419103232,), value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Wallet
+Function name: deposit()
+PC address: 769
+Estimated Gas Usage: 1955 - 2430
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: dataset\wallet_04_confused_sign.sol:23
+
+function deposit() public payable {
+
+         assert(balances[msg.sender] + msg.value > balances[msg.sender]);
+
+         balances[msg.sender] += msg.value;
+
+     }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x800000001, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: deposit(), txdata: 0xd0e30db0, value: 0x0
+
+

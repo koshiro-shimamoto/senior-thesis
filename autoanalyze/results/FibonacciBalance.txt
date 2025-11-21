@@ -1,0 +1,151 @@
+==== Delegatecall to user-supplied address ====
+SWC ID: 112
+Severity: High
+Contract: FibonacciBalance
+Function name: fallback
+PC address: 212
+Estimated Gas Usage: 1748 - 38663
+The contract delegates execution to another contract with a user-supplied address.
+The smart contract delegates execution to a user-supplied address.This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
+--------------------
+In file: dataset\FibonacciBalance.sol:38
+
+fibonacciLibrary.delegatecall(msg.data)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1000000000000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: dededededededededededededeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x, decoded_data: , value: 0x0
+
+==== Delegatecall to user-supplied address ====
+SWC ID: 112
+Severity: High
+Contract: FibonacciBalance
+Function name: withdraw()
+PC address: 740
+Estimated Gas Usage: 10192 - 99460
+The contract delegates execution to another contract with a user-supplied address.
+The smart contract delegates execution to a user-supplied address.This could allow an attacker to execute arbitrary code in the context of this contract account and manipulate the state of the contract account or execute actions on its behalf.
+--------------------
+In file: dataset\FibonacciBalance.sol:31
+
+fibonacciLibrary.delegatecall(fibSig, withdrawalCounter)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x20000000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: dededededededededededededeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: FibonacciBalance
+Function name: withdraw()
+PC address: 793
+Estimated Gas Usage: 10192 - 99460
+Read of persistent state following external call
+The contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: dataset\FibonacciBalance.sol:32
+
+calculatedFibNumber
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: dededededededededededededeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== Multiple Calls in a Single Transaction ====
+SWC ID: 113
+Severity: Low
+Contract: FibonacciBalance
+Function name: withdraw()
+PC address: 815
+Estimated Gas Usage: 10192 - 99460
+Multiple calls are executed in the same transaction.
+This call is executed following another call within the same transaction. It is possible that the call never gets executed if a prior call fails permanently. This might be caused intentionally by a malicious callee. If possible, refactor the code such that each transaction only executes one external call or make sure that all callees can be trusted (i.e. they’re part of your own codebase).
+--------------------
+In file: dataset\FibonacciBalance.sol:32
+
+msg.sender.transfer(calculatedFibNumber * 1 ether)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Medium
+Contract: FibonacciBalance
+Function name: withdraw()
+PC address: 815
+Estimated Gas Usage: 10192 - 99460
+Write to persistent state following external call
+The contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: dataset\FibonacciBalance.sol:32
+
+msg.sender.transfer(calculatedFibNumber * 1 ether)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: dededededededededededededeadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: FibonacciBalance
+Function name: withdraw()
+PC address: 815
+Estimated Gas Usage: 10192 - 99460
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+In file: dataset\FibonacciBalance.sol:32
+
+msg.sender.transfer(calculatedFibNumber * 1 ether)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: withdraw(), txdata: 0x3ccfd60b, value: 0x0
+
+
