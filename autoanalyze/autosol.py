@@ -61,7 +61,7 @@ def main():
         version_tuple = version_to_tuple(version) if version else None
         print(f"  pragma: {raw_version}, 抽出バージョン: {version}")
         
-        #0.4.10はスキップ
+        #0.4.15はスキップ
         if version_tuple and version_tuple <= (0, 4, 15):
             print(f"  [SKIP] {sol_path} は Solidity {version} (<= 0.4.15) のため Mythril を実行しません")
 

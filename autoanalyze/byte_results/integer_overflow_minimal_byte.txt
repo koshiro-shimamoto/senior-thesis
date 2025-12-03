@@ -1,0 +1,21 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: run(uint256)
+PC address: 162
+Estimated Gas Usage: 6019 - 26114
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: run(uint256), txdata: 0xa444f5e901, decoded_data: (452312848583266388373324160190187140051835877600158453279131187530910662656,), value: 0x0
+
+

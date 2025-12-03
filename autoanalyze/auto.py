@@ -23,7 +23,15 @@ def extract_and_normalize_solidity_version(sol_file_path):
     if m2:
         return ( m2.group(1))
     return ( None)
-    
+
+def change_version(version):
+    #0.4.5以下と0.4.15は動かんから0.4.15に変更
+    major, minor, patch = map(int, version.split('.'))
+    v = (major, minor, patch)
+    if v == (0,4,15) or v <= (0,4,5):
+        return "0.4.19"
+    return version
+
 def switch_solc_version(version):
     #solc-select を使ってコンパイラバージョンを変更
     try:
@@ -43,7 +51,6 @@ def switch_solc_version(version):
     except Exception as e:
         print(f"  [ERROR] solc-select 実行中に例外発生: {e}")
         return False
-    
 
 def compile_solidity(sol_file_path, compiled_dir):
         """
@@ -68,7 +75,7 @@ def compile_solidity(sol_file_path, compiled_dir):
                 return False
 
             lines = result.stdout.splitlines()
-            if len(lines)< 2:
+            if len(lines)< 2:#この箇所を===があれば2行分削除に変更した方がいいかも
                 print("[WARN] 出力行数が少なく、削除できません")
                 stripped = result.stdout
             else:#先頭の2行を削除
@@ -99,7 +106,7 @@ def main():
         return
 
     # 出力フォルダ
-    results_dir = "results"
+    results_dir = "byte_results"
     os.makedirs(results_dir, exist_ok=True)
     compiled_dir = "compiled"
     #solファイルを集める
@@ -123,7 +130,8 @@ def main():
         print(f"=== Analyzing {sol_path} ===")
         # sol のバージョン抽出（raw と正規化された x.y.z を取得）
         version = extract_and_normalize_solidity_version(sol_path)
-        #print(version)
+        version = change_version(version)
+        print(version)
         #version_tuple = version_to_tuple(version) if version else None
                 # ③ solc-select でバージョン切替
         if version:
@@ -158,7 +166,7 @@ def main():
 
         # エラー出力 → error.txt
         if result.stderr.strip():
-            error_path = output_path.replace(".txt", "_byte_error.txt")
+            error_path = output_path.replace(".txt", "_error.txt")
             with open(error_path, "w", encoding="utf-8") as f:
                 f.write(result.stderr)
 

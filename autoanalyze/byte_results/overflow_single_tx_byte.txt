@@ -1,0 +1,62 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: underflowtostate(uint256)
+PC address: 476
+Estimated Gas Usage: 6068 - 26163
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: underflowtostate(uint256), txdata: 0x4c4f50f301, decoded_data: (452312848583266388373324160190187140051835877600158453279131187530910662656,), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: overflowmultostate(uint256)
+PC address: 494
+Estimated Gas Usage: 6092 - 26187
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: overflowaddtostate(uint256), txdata: 0xdef92d6873, decoded_data: (52015977587075634662932278421871521105961125924018222127100086566054726205440,), value: 0x0
+Caller: [ATTACKER], function: overflowmultostate(uint256), txdata: 0x5c68bc06dd, decoded_data: (99961139536901871830504639402031357951455728949635018174687992444331256446976,), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: overflowaddtostate(uint256)
+PC address: 525
+Estimated Gas Usage: 6134 - 26229
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: overflowaddtostate(uint256), txdata: 0xdef92d68ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, decoded_data: (115792089237316195423570985008687907853269984665640564039457584007913129639935,), value: 0x0
+
+
