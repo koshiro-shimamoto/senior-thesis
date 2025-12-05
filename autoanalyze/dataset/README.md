@@ -1,41 +1,16 @@
-# Arithmetic
-Also known as integer overflow and integer underflow.
+# Unchecked Low Level Calls
+Also known as or related to silent failing sends, unchecked-send.
 
-Integer overflows and underflows are not a new class of vulnerability, but they are especially dangerous in smart contracts, where unsigned integers are prevalent and most developers are used to simple int types (which are often just signed integers). If overflows occur, many benign-seeming codepaths become vectors for theft or denial of service.
-
-## Attack Scenario
-A smart contract's withdraw() function allows you to retrieve ether donated to the contract as long as your balance remains positive after the operation.
-An attacker attempts to withdraw more than his or her current balance.
-The withdraw() function check's result is always a positive amount, allowing the attacker to withdraw more than allowed. The resulting balance underflows and becomes an order of magnitude larger than it should be.
+One of the deeper features of Solidity are the low level functions call(), callcode(), delegatecall() and send(). Their behavior in accounting for errors is quite different from other Solidity functions, as they will not propagate (or bubble up) and will not lead to a total reversion of the current execution. Instead, they will return a boolean value set to false, and the code will continue to run. This can surprise developers and, if the return value of such low-level calls are not checked, can lead to fail-opens and other unwanted outcomes. Remember, send can fail!
 
 ## Examples
-The most straightforward example is a function that does not check for integer underflow, allowing you to withdraw an infinite amount of tokens:
+The following code is an example of what can go wrong when one forgets to check the return value of send(). If the call is used to send ether to a smart contract that does not accept them (e.g. because it does not have a payable fallback function), the EVM will replace its return value with false. Since the return value is not checked in our example, the function's changes to the contract state will not be reverted, and the etherLeft variable will end up tracking an incorrect value:
 ```
-function withdraw(uint _amount) {
-	require(balances[msg.sender] - _amount > 0);
-	msg.sender.transfer(_amount);
+function withdraw(uint256 _amount) public {
+	require(balances[msg.sender] >= _amount);
 	balances[msg.sender] -= _amount;
-}
-```
-The second example (spotted during the Underhanded Solidity Coding Contest) is an off-by-one error facilitated by the fact that an array's length is represented by an unsigned integer:
-```
-function popArrayOfThings() {
-	require(arrayOfThings.length >= 0);
-	arrayOfThings.length--; 
-}
-```
-The third example is a variant of the first example, where the result of arithmetic on two unsigned integers is an unsigned integer:
-```
-function votes(uint postId, uint upvote, uint downvotes) {
-	if (upvote - downvote < 0) {
-		deletePost(postId)
-	}
-}
-```
-The fourth example features the soon-to-be-deprecated var keyword. Because var will change itself to the smallest type needed to contain the assigned value, it will become an uint8 to hold the value 0. If the loop is meant to iterate more than 255 times, it will never reach that number and will stop when the execution runs out of gas:
-```
-for (var i = 0; i < somethingLarge; i ++) {
-	// ...
+	etherLeft -= _amount;
+	msg.sender.send(_amount);
 }
 ```
 

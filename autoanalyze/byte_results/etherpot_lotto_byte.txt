@@ -1,0 +1,181 @@
+==== Dependence on predictable environment variable ====
+SWC ID: 120
+Severity: Low
+Contract: MAIN
+Function name: calculateWinner(uint256,uint256)
+PC address: 2363
+Estimated Gas Usage: 442 - 537
+A control flow decision is made based on The block.number environment variable.
+The block.number environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: calculateWinner(uint256,uint256), txdata: 0x6572ae13, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: MAIN
+Function name: calculateWinner(uint256,uint256)
+PC address: 2410
+Estimated Gas Usage: 1447 - 1732
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: calculateWinner(uint256,uint256), txdata: 0x6572ae13, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: MAIN
+Function name: getSubpot(uint256)
+PC address: 2758
+Estimated Gas Usage: 3266 - 3931
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: getSubpot(uint256), txdata: 0x93dafba2, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: getDecisionBlockNumber(uint256,uint256)
+PC address: 3044
+Estimated Gas Usage: 609 - 985
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: getDecisionBlockNumber(uint256,uint256), txdata: 0xdf2f0a4affffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: calculateWinner(uint256,uint256)
+PC address: 3044
+Estimated Gas Usage: 559 - 935
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: calculateWinner(uint256,uint256), txdata: 0x6572ae13ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff40, decoded_data: (115792089237316195423570985008687907853269984665640564039457584007913129639935, 28948022309329048855892746252171976963317496166410141009864396001978282409984), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: getDecisionBlockNumber(uint256,uint256)
+PC address: 3045
+Estimated Gas Usage: 609 - 985
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: getDecisionBlockNumber(uint256,uint256), txdata: 0xdf2f0a4a1a, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: calculateWinner(uint256,uint256)
+PC address: 3045
+Estimated Gas Usage: 559 - 935
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: calculateWinner(uint256,uint256), txdata: 0x6572ae1315, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: getDecisionBlockNumber(uint256,uint256)
+PC address: 3046
+Estimated Gas Usage: 609 - 985
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: getDecisionBlockNumber(uint256,uint256), txdata: 0xdf2f0a4a0bd10ddbe2c8d42c0000000000005000000008020040315a002088c0ab00002880, decoded_data: (5344808021768635072326670382439440358366709059166041957535030269008106487848, 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: calculateWinner(uint256,uint256)
+PC address: 3046
+Estimated Gas Usage: 559 - 935
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: calculateWinner(uint256,uint256), txdata: 0x6572ae1304105ede1000000008002f900000000040000000000000104d7208419a33cd6850, decoded_data: (1838175698319274790097774895542496973178721180814408408330350338969370348904, 36185027886661311069865932815214971204146870208012676262330495002472853012480), value: 0x0
+
+

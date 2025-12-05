@@ -61,13 +61,13 @@ def main():
         version_tuple = version_to_tuple(version) if version else None
         print(f"  pragma: {raw_version}, 抽出バージョン: {version}")
         
-        #0.4.15はスキップ
-        if version_tuple and version_tuple <= (0, 4, 15):
-            print(f"  [SKIP] {sol_path} は Solidity {version} (<= 0.4.15) のため Mythril を実行しません")
+        #0.4.16はスキップ
+        if version_tuple and version_tuple <= (0, 4, 16):
+            print(f"  [SKIP] {sol_path} は Solidity {version} (<= 0.4.16) のため Mythril を実行しません")
 
             skip_path = os.path.join(results_dir, file_name.replace(".sol", "_skip.txt"))
             with open(skip_path, "w", encoding="utf-8") as f:
-                f.write(f"Skipped {sol_path}\nReason: Solidity version is <= 0.4.15 ({version})\n")
+                f.write(f"Skipped {sol_path}\nReason: Solidity version is <= 0.4.16 ({version})\n")
 
             continue  # mythril 実行しない
         

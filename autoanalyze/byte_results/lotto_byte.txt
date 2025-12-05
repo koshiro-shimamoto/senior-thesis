@@ -1,0 +1,106 @@
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x1846f51a
+PC address: 424
+Estimated Gas Usage: 2472 - 37083
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x8f1c0585, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1846f51a, decoded_data: , value: 0x0
+
+==== Unchecked return value from external call. ====
+SWC ID: 104
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x1846f51a
+PC address: 424
+Estimated Gas Usage: 2472 - 37083
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x8f1c0585, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x1846f51a, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x1846f51a, decoded_data: , value: 0x0
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: MAIN
+Function name: _function_0x1846f51a
+PC address: 424
+Estimated Gas Usage: 2472 - 37083
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x481835de449020094, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x8f1c0585, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1846f51a, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1846f51a, decoded_data: , value: 0x0
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x8f1c0585
+PC address: 543
+Estimated Gas Usage: 9296 - 64567
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x8f1c0585, decoded_data: , value: 0x0
+
+==== Unchecked return value from external call. ====
+SWC ID: 104
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x8f1c0585
+PC address: 543
+Estimated Gas Usage: 9296 - 64567
+The return value of a message call is not checked.
+External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x8f1c0585, decoded_data: , value: 0x0
+
+
