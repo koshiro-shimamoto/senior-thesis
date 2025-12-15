@@ -25,7 +25,7 @@ def extract_and_normalize_solidity_version(sol_file_path):
     return ( None)
 
 def change_version(version):
-    #0.4.5以下と0.4.15は動かんから0.4.15に変更
+    #0.4.5以下と0.4.15は動かんから0.4.19に変更
     major, minor, patch = map(int, version.split('.'))
     v = (major, minor, patch)
     if v == (0,4,15) or v <= (0,4,5):
@@ -75,22 +75,43 @@ def compile_solidity(sol_file_path, compiled_dir):
                 return False
 
             lines = result.stdout.splitlines()
-            if len(lines)< 2:#この箇所を===があれば2行分削除に変更した方がいいかも
-                print("[WARN] 出力行数が少なく、削除できません")
-                stripped = result.stdout
-            else:#先頭の2行を削除
-                stripped = "\n".join(lines[3:])
-            # 出力をそのままファイルに保存（必要ならパースして個別ファイル化する）
-            with open(bin_output_path, "w", encoding="utf-8") as f:
-                f.write(stripped)
-
-            print(f"  ✔ コンパイル成功: {bin_output_path}")
+            current_contract = None
+            buffer = []
+            
+            #base_name = os.path.splittext(os.path.basename(sol_file_path))[0]
+            i = 0
+            while i < len(lines):
+                line = lines[i]
+                
+                if line.startswith("=") and ":" in line and line.endswith("="):
+                    if current_contract and buffer:
+                        bin_out_path = os.path.join(compiled_dir,f"{file_name}_{current_contract}.bin")
+                        with open(bin_out_path, "w", encoding="utf-8") as f:
+                            f.write("\n".join(buffer))
+                            print(f"書き込み成功:{bin_out_path}")
+                    
+                    buffer =[]
+                    if i + 1 <len(lines) and lines[i+1].startswith("Binary:"):
+                        match= re.search(r":([^:\s]+)\s*=",line)
+                        if match:
+                            current_contract = match.group(1)
+                        else:
+                            current_contract = "Unknown"
+                        i += 2
+                        continue
+                if current_contract:
+                    buffer.append(line)
+                i += 1
+                
+            if current_contract and buffer:
+                bin_out_path = os.path.join(compiled_dir,f"{file_name}_{current_contract}.bin")
+                with open(bin_out_path, "w", encoding="utf-8") as f:
+                    f.write("\n".join(buffer))
+                    print(f"書き込み成功:{bin_out_path}")
             return bin_output_path
-
         except Exception as e:
-            print(f"  [ERROR] コンパイル中に例外発生: {e}")
+            print(f"  [ERROR] solc 実行中に例外発生: {e}")
             return False
-
 
 def main():
     # コマンドライン引数チェック
@@ -125,8 +146,7 @@ def main():
     
     for sol_path in sol_files:
         file_name = os.path.basename(sol_path)
-        output_path = os.path.join(results_dir, file_name.replace(".sol", "_byte.txt"))
-
+        
         print(f"=== Analyzing {sol_path} ===")
         # sol のバージョン抽出（raw と正規化された x.y.z を取得）
         version = extract_and_normalize_solidity_version(sol_path)
@@ -146,7 +166,13 @@ def main():
         if not bin_path:
             print("  [ERROR] コンパイルに失敗したためスキップ")
             continue
+#compiled_dirにあるファイルすべてをコンパイル
 
+    compiled_files = glob.glob(os.path.join(compiled_dir, "**/*.bin"), recursive=True)
+    for bin_path in compiled_files:
+        file_name = os.path.basename(bin_path)#/前やbinを除いた名前
+        output_path = os.path.join(results_dir, file_name.replace(".bin", ".txt"))
+        
         cmd = [
             "myth",
             "analyze",
