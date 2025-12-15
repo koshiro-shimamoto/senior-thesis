@@ -1,10 +1,8 @@
-#solファイルをコンパイルしてバイトコードを生成するスクリプト
 import subprocess
 import glob
 import os
 import sys
 import re
-
 def extract_and_normalize_solidity_version(sol_file_path):
    #solidityファイルからバージョンを抜き出す
     pattern = r"pragma\s+solidity\s+([^;]+);"
@@ -115,7 +113,7 @@ def compile_solidity(sol_file_path, compiled_dir):
             return False
 
 def main():
-    # コマンドライン引数チェック
+     # コマンドライン引数チェック
     if len(sys.argv) < 2:
         print("Usage: python mythril_batch.py <dataset_directory>")
         return
@@ -128,9 +126,8 @@ def main():
         return
 
     # 出力フォルダ
-    results_dir = "results"
-    os.makedirs(results_dir, exist_ok=True)
-    compiled_dir = "compiled"
+    compiled_dir = "sol_compiled_result"
+   
     #solファイルを集める
     sol_files = glob.glob(os.path.join(dataset_dir, "**/*.sol"), recursive=True)
     if not sol_files:
@@ -167,37 +164,5 @@ def main():
         if not bin_path:
             print("  [ERROR] コンパイルに失敗したためスキップ")
             continue
-#compiled_dirにあるファイルすべてをコンパイル
-
-    compiled_files = glob.glob(os.path.join(compiled_dir, "**/*.bin"), recursive=True)
-    for bin_path in compiled_files:
-        file_name = os.path.basename(bin_path)#/前やbinを除いた名前
-        output_path = os.path.join(results_dir, file_name.replace(".bin", ".txt"))
-        
-        cmd = [
-            "myth",
-            "analyze",
-            "-f",
-            bin_path,
-            "-t", "3",
-            "--execution-timeout", "180"
-        ]
-
-        # Mythril 実行
-        print(f"  Running Mythril...:{bin_path}")
-        result = subprocess.run(cmd, capture_output=True, text=True)
-
-        # 通常出力 → txt
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(result.stdout)
-
-        # エラー出力 → error.txt
-        if result.stderr.strip():
-            error_path = output_path.replace(".txt", "_error.txt")
-            with open(error_path, "w", encoding="utf-8") as f:
-                f.write(result.stderr)
-
-        print(f"Saved: {output_path}")
-
 if __name__ == "__main__":
     main()

@@ -1,3 +1,4 @@
+#byte(obfファイル)をmythrilで解析するスクリプト
 import os
 import sys
 import glob
@@ -15,7 +16,7 @@ def main():
     results_dir = "byte_results"
     evm_files = glob.glob(os.path.join(dataset_dir,"**/*.obf"),recursive=True)
     if not evm_files:
-        print("ERROR: 指定したディレクトリに .sol ファイルがありません")
+        print("ERROR: 指定したディレクトリに .obf ファイルがありません")
         return
     
     for evm_path in evm_files:

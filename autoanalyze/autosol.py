@@ -1,3 +1,4 @@
+#solファイルをmythrilで解析するためのスクリプト
 import subprocess
 import glob
 import os
