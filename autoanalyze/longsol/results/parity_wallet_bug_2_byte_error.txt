@@ -1,0 +1,28 @@
+C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\plugin\discovery.py:3: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[34mmythril.interfaces.cli[0m [1;30m[ERROR]:[0m [31mTraceback (most recent call last):
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\interfaces\cli.py", line 964, in parse_args_and_execute
+    address = load_code(disassembler, args)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\interfaces\cli.py", line 703, in load_code
+    address, _ = disassembler.load_from_bytecode(bytecode, args.bin_runtime)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\mythril\mythril_disassembler.py", line 120, in load_from_bytecode
+    EVMContract(
+    ~~~~~~~~~~~^
+        creation_code=code,
+        ^^^^^^^^^^^^^^^^^^^
+        name="MAIN",
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\ethereum\evmcontract.py", line 37, in __init__
+    self.creation_disassembly = Disassembly(creation_code)
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\disassembler\disassembly.py", line 27, in __init__
+    self.instruction_list = asm.disassemble(util.safe_decode(code))
+                                            ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\ethereum\util.py", line 35, in safe_decode
+    return bytes.fromhex(hex_encoded_string)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+ValueError: non-hexadecimal number found in fromhex() arg at position 0
+[0m

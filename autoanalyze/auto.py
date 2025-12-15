@@ -106,7 +106,7 @@ def main():
         return
 
     # 出力フォルダ
-    results_dir = "byte_results"
+    results_dir = "results"
     os.makedirs(results_dir, exist_ok=True)
     compiled_dir = "compiled"
     #solファイルを集める

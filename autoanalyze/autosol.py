@@ -40,7 +40,7 @@ def main():
         return
 
     # 出力フォルダ
-    results_dir = "results"
+    results_dir = "sol_results"
     os.makedirs(results_dir, exist_ok=True)
 
     # .sol ファイルを再帰的に集める
