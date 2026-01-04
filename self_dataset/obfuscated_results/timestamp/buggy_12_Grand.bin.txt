@@ -3,7 +3,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 3785
+PC address: 3719
 Estimated Gas Usage: 175 - 270
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -23,8 +23,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 3819
-Estimated Gas Usage: 245 - 340
+PC address: 3756
+Estimated Gas Usage: 250 - 345
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -43,15 +43,15 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 3890
-Estimated Gas Usage: 1784 - 36065
+PC address: 3827
+Estimated Gas Usage: 1789 - 36070
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x10100040002000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x480014304a2000002, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -63,8 +63,8 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 3890
-Estimated Gas Usage: 1784 - 36065
+PC address: 3827
+Estimated Gas Usage: 1789 - 36070
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
@@ -83,7 +83,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4020
+PC address: 3967
 Estimated Gas Usage: 231 - 326
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -103,7 +103,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4057
+PC address: 4004
 Estimated Gas Usage: 306 - 401
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -123,15 +123,15 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4141
-Estimated Gas Usage: 1891 - 36172
+PC address: 4075
+Estimated Gas Usage: 1845 - 36126
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40100040542080002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x21108040502080010, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -143,15 +143,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4141
-Estimated Gas Usage: 1891 - 36172
+PC address: 4075
+Estimated Gas Usage: 1845 - 36126
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4410618000004a4c0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -163,8 +163,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4190
-Estimated Gas Usage: 6283 - 26708
+PC address: 4124
+Estimated Gas Usage: 6237 - 26662
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -183,8 +183,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4200
-Estimated Gas Usage: 393 - 488
+PC address: 4134
+Estimated Gas Usage: 347 - 442
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -203,48 +203,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4458
-Estimated Gas Usage: 6317 - 26742
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x2d79f3cc, decoded_data: , value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 4459
-Estimated Gas Usage: 6317 - 26742
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x2d79f3ccfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc, decoded_data: , value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 4465
-Estimated Gas Usage: 6317 - 26742
+PC address: 4390
+Estimated Gas Usage: 6293 - 26718
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -256,15 +216,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x2d79f3ccfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x2d79f3ccfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4475
-Estimated Gas Usage: 427 - 522
+PC address: 4400
+Estimated Gas Usage: 403 - 498
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -276,14 +236,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x2d79f3cc, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x2d79f3cc, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4767
+PC address: 4683
 Estimated Gas Usage: 6387 - 26812
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -303,7 +263,7 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4768
+PC address: 4684
 Estimated Gas Usage: 6387 - 26812
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -323,7 +283,7 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4774
+PC address: 4690
 Estimated Gas Usage: 6387 - 26812
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -343,7 +303,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4784
+PC address: 4700
 Estimated Gas Usage: 499 - 594
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -356,15 +316,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x35e7405f, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x35e7405f, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4860
-Estimated Gas Usage: 6415 - 26840
+PC address: 4776
+Estimated Gas Usage: 6392 - 26817
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -383,8 +343,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4870
-Estimated Gas Usage: 527 - 622
+PC address: 4786
+Estimated Gas Usage: 504 - 599
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -403,8 +363,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4946
-Estimated Gas Usage: 6443 - 26868
+PC address: 4862
+Estimated Gas Usage: 6466 - 26891
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -423,8 +383,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4956
-Estimated Gas Usage: 555 - 650
+PC address: 4872
+Estimated Gas Usage: 578 - 673
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -436,14 +396,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x38f45e36, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x38f45e36, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5193
+PC address: 5108
 Estimated Gas Usage: 539 - 634
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -463,14 +423,14 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5230
+PC address: 5145
 Estimated Gas Usage: 614 - 709
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x42000000002000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -483,7 +443,7 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5301
+PC address: 5216
 Estimated Gas Usage: 2153 - 36434
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
@@ -491,7 +451,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x1010000048a080002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42100040040080001, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -503,7 +463,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5301
+PC address: 5216
 Estimated Gas Usage: 2153 - 36434
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -511,7 +471,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40000000000050400, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x400000e0600000a80, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -523,7 +483,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5374
+PC address: 5289
 Estimated Gas Usage: 567 - 662
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -543,27 +503,27 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5411
+PC address: 5326
 Estimated Gas Usage: 642 - 737
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x56a3ed38, decoded_data: , value: 0x8ac7230489e80000
+Caller: [SOMEGUY], function: unknown, txdata: 0x56a3ed38, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5482
+PC address: 5397
 Estimated Gas Usage: 2181 - 36462
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
@@ -571,7 +531,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x11000040542000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42300100000000008, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -583,7 +543,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5482
+PC address: 5397
 Estimated Gas Usage: 2181 - 36462
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -591,7 +551,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x401c7400420080080, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -603,8 +563,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5535
-Estimated Gas Usage: 6583 - 27008
+PC address: 5450
+Estimated Gas Usage: 6560 - 26985
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -623,7 +583,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5545
+PC address: 5460
 Estimated Gas Usage: 672 - 767
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -643,7 +603,7 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5725
+PC address: 5629
 Estimated Gas Usage: 6680 - 27105
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -663,7 +623,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5735
+PC address: 5639
 Estimated Gas Usage: 790 - 885
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -676,15 +636,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x7cd2ce0f, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x7cd2ce0f, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5836
-Estimated Gas Usage: 6759 - 27184
+PC address: 5740
+Estimated Gas Usage: 6737 - 27162
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -703,8 +663,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5846
-Estimated Gas Usage: 869 - 964
+PC address: 5750
+Estimated Gas Usage: 846 - 941
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -716,14 +676,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x88d5cb7c, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x88d5cb7c, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5943
+PC address: 5848
 Estimated Gas Usage: 6769 - 27194
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -743,7 +703,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5953
+PC address: 5858
 Estimated Gas Usage: 879 - 974
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -756,15 +716,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x8d356d07, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x8d356d07, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6138
-Estimated Gas Usage: 6863 - 27288
+PC address: 6033
+Estimated Gas Usage: 6886 - 27311
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -783,8 +743,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6139
-Estimated Gas Usage: 6863 - 27288
+PC address: 6034
+Estimated Gas Usage: 6886 - 27311
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -803,8 +763,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6145
-Estimated Gas Usage: 6863 - 27288
+PC address: 6040
+Estimated Gas Usage: 6886 - 27311
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -823,8 +783,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6155
-Estimated Gas Usage: 975 - 1070
+PC address: 6050
+Estimated Gas Usage: 998 - 1093
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -836,15 +796,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x975b58d9, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x975b58d9, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6242
-Estimated Gas Usage: 6955 - 27380
+PC address: 6137
+Estimated Gas Usage: 6932 - 27357
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -856,15 +816,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x99d8cc4dfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x99d8cc4dfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6252
-Estimated Gas Usage: 1065 - 1160
+PC address: 6147
+Estimated Gas Usage: 1042 - 1137
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -876,15 +836,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x99d8cc4d, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x99d8cc4d, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6337
-Estimated Gas Usage: 6960 - 27385
+PC address: 6232
+Estimated Gas Usage: 7007 - 27432
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -903,8 +863,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6338
-Estimated Gas Usage: 6960 - 27385
+PC address: 6233
+Estimated Gas Usage: 7007 - 27432
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -923,8 +883,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6344
-Estimated Gas Usage: 6960 - 27385
+PC address: 6239
+Estimated Gas Usage: 7007 - 27432
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -943,8 +903,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6354
-Estimated Gas Usage: 1070 - 1165
+PC address: 6249
+Estimated Gas Usage: 1116 - 1211
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -956,75 +916,35 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0xa0c95111, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xa0c95111, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6850
+PC address: 6736
 Estimated Gas Usage: 1071 - 1166
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
+Caller: [SOMEGUY], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6887
+PC address: 6773
 Estimated Gas Usage: 1146 - 1241
-A control flow decision is made based on The block.timestamp environment variable.
-The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x20000000000000001, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
-
-==== Dependence on predictable environment variable ====
-SWC ID: 116
-Severity: Low
-Contract: MAIN
-Function name: fallback
-PC address: 7423
-Estimated Gas Usage: 1183 - 1278
-A control flow decision is made based on The block.timestamp environment variable.
-The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x200c92904c0080001, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
-
-==== Dependence on predictable environment variable ====
-SWC ID: 116
-Severity: Low
-Contract: MAIN
-Function name: fallback
-PC address: 7460
-Estimated Gas Usage: 1258 - 1353
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -1036,6 +956,86 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: fallback
+PC address: 6844
+Estimated Gas Usage: 2685 - 36966
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x401000020c0080001, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 6844
+Estimated Gas Usage: 2685 - 36966
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000000000, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xac8e4261, decoded_data: , value: 0x8ac7230489e80000
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: MAIN
+Function name: fallback
+PC address: 7318
+Estimated Gas Usage: 1183 - 1278
+A control flow decision is made based on The block.timestamp environment variable.
+The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: MAIN
+Function name: fallback
+PC address: 7356
+Estimated Gas Usage: 1258 - 1353
+A control flow decision is made based on The block.timestamp environment variable.
+The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [CREATOR], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Dependence on predictable environment variable ====
@@ -1043,7 +1043,7 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 7604
+PC address: 7499
 Estimated Gas Usage: 1306 - 1401
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
@@ -1063,59 +1063,79 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 7715
+PC address: 7620
 Estimated Gas Usage: 1239 - 1334
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd5214029, decoded_data: , value: 0x8ac7230489e80000
+Caller: [SOMEGUY], function: unknown, txdata: 0xd5214029, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 7752
+PC address: 7657
 Estimated Gas Usage: 1314 - 1409
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x20000000000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd5214029, decoded_data: , value: 0x8ac7230489e80000
+Caller: [SOMEGUY], function: unknown, txdata: 0xd5214029, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 7907
+PC address: 7803
 Estimated Gas Usage: 1267 - 1362
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x42000000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd8495c6d, decoded_data: , value: 0x8ac7230489e80000
+Caller: [SOMEGUY], function: unknown, txdata: 0xd8495c6d, decoded_data: , value: 0x8ac7230489e80000
+
+==== Dependence on predictable environment variable ====
+SWC ID: 116
+Severity: Low
+Contract: MAIN
+Function name: fallback
+PC address: 7840
+Estimated Gas Usage: 1342 - 1437
+A control flow decision is made based on The block.timestamp environment variable.
+The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0xd8495c6d, decoded_data: , value: 0x8ac7230489e80000
 
 

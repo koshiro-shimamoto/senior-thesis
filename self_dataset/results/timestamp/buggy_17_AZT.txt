@@ -70,7 +70,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x1a100040542080001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42100040522000010, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -90,7 +90,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40000000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000004004, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -137,13 +137,53 @@ Transaction Sequence:
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [SOMEGUY], function: unknown, txdata: 0x17c6abfa, decoded_data: , value: 0x8ac7230489e80000
 
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x17c6abfa
+PC address: 5003
+Estimated Gas Usage: 1875 - 36156
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0xa000001002000001, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x17c6abfa, decoded_data: , value: 0x8ac7230489e80000
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: MAIN
+Function name: _function_0x17c6abfa
+PC address: 5003
+Estimated Gas Usage: 1875 - 36156
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000000002, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x17c6abfa, decoded_data: , value: 0x8ac7230489e80000
+
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: _function_0x2831fe30
 PC address: 5343
-Estimated Gas Usage: 362 - 457
+Estimated Gas Usage: 6228 - 26653
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -155,7 +195,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x2831fe30fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff97080, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x2831fe30fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff98004, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -175,7 +215,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x2831fe300000000000000000000000000000000000000000000000000000000008020040, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x2831fe300000000000000000000000000000000000000000000000000000000008808080, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -183,7 +223,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0x35e7405f
 PC address: 5460
-Estimated Gas Usage: 415 - 510
+Estimated Gas Usage: 6281 - 26706
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -195,7 +235,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x35e7405ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9a804, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x35e7405ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -215,7 +255,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x35e7405f0000000000000000000000004000200480100004200000200440100008004002, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x35e7405f8080808080808080808080800080808020000020000810408080020040408020, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -310,7 +350,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42000040542080002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x10000000500000004, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -330,7 +370,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40000001400000042, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000000002, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -355,7 +395,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x5506ed440101010101010101010101019fd50766c03370088a20a0c0ba80003880010880, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x5506ed440101010101010101010101019fd50776f133751e8ae6abe1be124638bb917e05, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -415,7 +455,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x7cd2ce0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa0c00, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x7cd2ce0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9a904, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -443,7 +483,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0x88d5cb7c
 PC address: 7159
-Estimated Gas Usage: 362 - 457
+Estimated Gas Usage: 6228 - 26653
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -455,7 +495,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x88d5cb7cfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffb0800, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x88d5cb7cfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -475,7 +515,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x88d5cb7c0000000000000000000000000000000000000000000000000000000004008000, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x88d5cb7cd5d5d5d5d5d5d5d5d5d5d5d59fd50776f133751e8ae6abe1be124638bb917e05, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -483,7 +523,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0x8d356d07
 PC address: 7262
-Estimated Gas Usage: 406 - 501
+Estimated Gas Usage: 6272 - 26697
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -495,7 +535,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x8d356d07fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x8d356d07fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd6800, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -515,7 +555,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x8d356d070000000000000000000000002000020820021004001002010004801080008002, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x8d356d070808080808080808080808080880000401000804080210080880000104204008, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -535,7 +575,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x975b58d9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x975b58d9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff97240, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -563,7 +603,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0x99d8cc4d
 PC address: 7627
-Estimated Gas Usage: 383 - 478
+Estimated Gas Usage: 6249 - 26674
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -575,7 +615,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x99d8cc4dfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff98080, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x99d8cc4dfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -595,7 +635,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x99d8cc4d0000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x99d8cc4d0000000000000000000000000000000000000000000000000000000080801020, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -603,7 +643,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0x9d595776
 PC address: 7710
-Estimated Gas Usage: 392 - 487
+Estimated Gas Usage: 6258 - 26683
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -615,7 +655,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x9d595776fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff96880, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x9d595776fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd6805, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -635,7 +675,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x9d5957768080808080808080808080801000800808018000080180208001008001800002, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x9d5957767676767676767676767676769fd50776f133751e8ae6abe1be124638bb917e05, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -643,7 +683,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0xa0c95111
 PC address: 7797
-Estimated Gas Usage: 427 - 522
+Estimated Gas Usage: 6293 - 26718
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -655,7 +695,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xa0c95111fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff98020, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xa0c95111fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa2902, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -675,7 +715,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xa0c951110000000000000000000000000000002001400808000810020040200040028008, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xa0c951118080808080808080808080801000800040014008010408028020018080022000, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -716,6 +756,46 @@ Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [SOMEGUY], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0xc78cc7d1
+PC address: 8058
+Estimated Gas Usage: 1851 - 36132
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x48ac723048a080002, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
+
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
+Severity: High
+Contract: MAIN
+Function name: _function_0xc78cc7d1
+PC address: 8058
+Estimated Gas Usage: 1851 - 36132
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000000001042, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xc78cc7d1, decoded_data: , value: 0x8ac7230489e80000
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -770,7 +850,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420000404c2000010, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0xc1030304a1680008, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -790,7 +870,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x44080000000002824, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40002000000000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -850,7 +930,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42100080900000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000040000008, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -870,7 +950,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x10400064200842302, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40100000000011802, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -883,7 +963,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0xec91c7e1
 PC address: 8819
-Estimated Gas Usage: 382 - 477
+Estimated Gas Usage: 6248 - 26673
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -895,7 +975,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xec91c7e1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9c002, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xec91c7e1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd6800, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -915,7 +995,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xec91c7e18080808080808080808080808020800820400080808040808020010020084004, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xec91c7e10000000000000000000000000000800880020040100020002010408040200004, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -923,7 +1003,7 @@ Severity: High
 Contract: MAIN
 Function name: _function_0xecd97e16
 PC address: 8902
-Estimated Gas Usage: 391 - 486
+Estimated Gas Usage: 6257 - 26682
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -935,7 +1015,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xecd97e16fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff98202, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xecd97e16fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd1208, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -955,6 +1035,6 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xecd97e164040404040404040404040401002042040040210044080204000400002804040, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xecd97e160000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 

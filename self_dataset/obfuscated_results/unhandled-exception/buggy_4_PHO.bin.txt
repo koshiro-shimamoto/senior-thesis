@@ -1,50 +1,31 @@
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
+==== Unprotected Ether Withdrawal ====
+SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 874
-Estimated Gas Usage: 3446 - 5187
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+PC address: 4141
+Estimated Gas Usage: 1077 - 35358
+Any sender can withdraw Ether from the contract account.
+Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x36001010177eca000, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: name(), txdata: 0x06fdde03, value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 2694
-Estimated Gas Usage: 3975 - 5716
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: link_classic_internal(uint64,int64), txdata: 0x95d89b41, value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x3e153b71000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x1
+Caller: [ATTACKER], function: unknown, txdata: 0x216ea3a2, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4294
-Estimated Gas Usage: 1194 - 35475
+PC address: 4221
+Estimated Gas Usage: 1171 - 35452
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -56,22 +37,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x24ebdd343434343434343434343434343434343434343434343434343434343434343434, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x24ebdd343434343434343434343434343434343434343434343434343434343434343434, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4294
-Estimated Gas Usage: 1194 - 35475
+PC address: 4221
+Estimated Gas Usage: 1171 - 35452
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0xa000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x2bc04, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -83,8 +64,8 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4420
-Estimated Gas Usage: 9475 - 64746
+PC address: 4346
+Estimated Gas Usage: 9474 - 64745
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -103,8 +84,8 @@ SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4420
-Estimated Gas Usage: 9475 - 64746
+PC address: 4346
+Estimated Gas Usage: 9474 - 64745
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -116,34 +97,34 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x294e1b8e, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x294e1b8e, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4525
-Estimated Gas Usage: 1275 - 35556
+PC address: 4451
+Estimated Gas Usage: 1252 - 35533
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x3e153b710000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x3e153b710000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4605
+PC address: 4531
 Estimated Gas Usage: 1419 - 35700
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
@@ -156,14 +137,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa33333333333333333333333376535ca5bf1d33434a302e5a464df433bb1f80f633333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x434fa4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4605
+PC address: 4531
 Estimated Gas Usage: 1419 - 35700
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -171,60 +152,60 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x81dc00021a3000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x800005c40, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa00000000000000000000000000004001000000200000000000080100800420000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
 
 ==== External Call To User-Supplied Address ====
 SWC ID: 107
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4705
-Estimated Gas Usage: 1513 - 36077
+PC address: 4631
+Estimated Gas Usage: 1490 - 36054
 A call to a user-supplied address is executed.
 An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x400000000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x550c16d4000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x550c16d4000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4705
-Estimated Gas Usage: 1513 - 36077
+PC address: 4631
+Estimated Gas Usage: 1490 - 36054
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x200080000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x550c16d40000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x550c16d4000000000000000000000000affeaffeaffeaffeaffeaffeeffeaffeaffeaf00, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4844
-Estimated Gas Usage: 1395 - 35676
+PC address: 4771
+Estimated Gas Usage: 1413 - 35694
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -236,22 +217,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x58dbb19c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x58dbb19c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4844
-Estimated Gas Usage: 1395 - 35676
+PC address: 4771
+Estimated Gas Usage: 1413 - 35694
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x100000001000c0000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x200020b60, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -263,7 +244,7 @@ SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5088
+PC address: 5015
 Estimated Gas Usage: 1558 - 35839
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
@@ -276,14 +257,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x7bf98cbf0000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x7bf98cbf5d5d5d5d5d5d5d5d5d5d5d5dd7ec5d8697e4c83dc33d781d19dc2910fb165d5c, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5088
+PC address: 5015
 Estimated Gas Usage: 1558 - 35839
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -291,7 +272,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x800000000002182, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -303,8 +284,8 @@ SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5183
-Estimated Gas Usage: 1606 - 35887
+PC address: 5110
+Estimated Gas Usage: 1583 - 35864
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -316,15 +297,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x8bd3d0d70000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x8bd3d0d7000000000000000000000000af802f7e00fa00faab80007eab7e00fe0000af80, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5680
-Estimated Gas Usage: 10024 - 65295
+PC address: 5596
+Estimated Gas Usage: 9979 - 65250
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -343,8 +324,8 @@ SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5680
-Estimated Gas Usage: 10024 - 65295
+PC address: 5596
+Estimated Gas Usage: 9979 - 65250
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -356,15 +337,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x994c3bfd, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: unknown, txdata: 0x994c3bfd, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 7068
-Estimated Gas Usage: 1968 - 36249
+PC address: 7019
+Estimated Gas Usage: 1922 - 36203
 The return value of a message call is not checked.
 External calls return a boolean value. If the callee halts with an exception, 'false' is returned and execution continues in the caller. The caller should check whether an exception happened and react accordingly to avoid unexpected behavior. For example it is often desirable to wrap external calls in require() so the transaction is reverted if the call fails.
 --------------------
@@ -376,22 +357,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0xcf43199b191919191919191919191919d7ec5d8697e4c83dc33d781d19dc2910fb165d5c, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xcf43199b0000000000000000000000000000000000002000800420800480800802000080, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7068
-Estimated Gas Usage: 1968 - 36249
+PC address: 7019
+Estimated Gas Usage: 1922 - 36203
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x114, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x2002, nonce:0, storage:{}
 
 Transaction Sequence:
 

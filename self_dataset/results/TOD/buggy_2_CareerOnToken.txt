@@ -15,7 +15,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 01010101010101010101010101010101010101010101010101010101100101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x045808e90000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
 
 ==== Exception State ====
@@ -55,14 +55,34 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 01010101010101010101010101010801010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 01010101010101010101010101010101010101012001010101010101010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x1b92061d0000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x1d70a211
+PC address: 4994
+Estimated Gas Usage: 8729 - 63670
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 01800201010101010101020101010100020101044001010201010202010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1d70a2110000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
 
 ==== Exception State ====
 SWC ID: 110
 Severity: Medium
 Contract: MAIN
-Function name: gasprice_bit_ether(int128) or transferFrom(address,address,uint256)
+Function name: transferFrom(address,address,uint256) or gasprice_bit_ether(int128)
 PC address: 5951
 Estimated Gas Usage: 611 - 706
 An assertion violation was triggered.
@@ -75,7 +95,27 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 08010101010101010101010101020101010101010201012001010101010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: gasprice_bit_ether(int128), txdata: 0x23b872dd000000000000000000000000000000000000000000000000000000000000000b0000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f0000000000000000000000000000000000000000000000000000000000000000, decoded_data: (11,), value: 0x0
+Caller: [CREATOR], calldata: 01010101010101010101010801040101010101010102010101010101014001010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: gasprice_bit_ether(int128), txdata: 0x23b872dd00000000000000000000000000000000000000000000000000000000000000060000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f0000000000000000000000000000000000000000000000000000000000000000, decoded_data: (6,), value: 0x0
+
+==== Transaction Order Dependence ====
+SWC ID: 114
+Severity: Medium
+Contract: MAIN
+Function name: _function_0x2e0c3357
+PC address: 6666
+Estimated Gas Usage: 8839 - 63780
+The value of the call is dependent on balance or storage write
+This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 01010101200101010101010101010101010101010101040101010101010101010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x2e0c33570000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
 
 

@@ -3,8 +3,48 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 1444
-Estimated Gas Usage: 783 - 2524
+PC address: 2194
+Estimated Gas Usage: 3920 - 10455
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: getAddress(string), txdata: 0xbf40fac1000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 2951
+Estimated Gas Usage: 15831 - 65681
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xd5e363f9000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 2982
+Estimated Gas Usage: 15831 - 65681
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -16,22 +56,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: version(), txdata: 0x54fd4d50, value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xd5e363f9000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 3276
-Estimated Gas Usage: 1009 - 35290
+PC address: 3338
+Estimated Gas Usage: 1032 - 35313
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x4, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010401400bfffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80000000000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4a0010804400bdffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -43,15 +83,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 3392
+PC address: 3475
 Estimated Gas Usage: 1065 - 35346
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200104044008ffbc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001080248075ffe, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -63,7 +103,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 3499
+PC address: 3581
 Estimated Gas Usage: 1121 - 35402
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -71,7 +111,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200108014009ffec, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010401400adf7c, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -83,15 +123,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4492
+PC address: 4529
 Estimated Gas Usage: 1064 - 35345
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010404400bdefd, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x22, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400b5ffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -103,15 +143,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4577
+PC address: 4614
 Estimated Gas Usage: 1092 - 35373
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010401400bfffe, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80000000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010801400bff69, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -123,15 +163,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4708
-Estimated Gas Usage: 1150 - 35431
+PC address: 4732
+Estimated Gas Usage: 1148 - 35429
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010801400bfffe, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x20000000000000b0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42000080c400b5ee5, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -143,15 +183,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4806
-Estimated Gas Usage: 1055 - 35336
+PC address: 4817
+Estimated Gas Usage: 1008 - 35289
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010801400b9ffc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4200102054207dffe, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -163,7 +203,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4891
+PC address: 4902
 Estimated Gas Usage: 1036 - 35317
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -171,7 +211,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010404400bdffc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010401400b3ffe, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -183,15 +223,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4976
+PC address: 4987
 Estimated Gas Usage: 1064 - 35345
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010404400bfffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400bbdf8, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -203,15 +243,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5149
+PC address: 5160
 Estimated Gas Usage: 1120 - 35401
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200104014008ede7, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2000000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x10010401020beb2a, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -223,15 +263,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5234
+PC address: 5245
 Estimated Gas Usage: 1007 - 35288
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x3e6080620, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3f482c88a1c273fd8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400bfffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -243,7 +283,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5319
+PC address: 5330
 Estimated Gas Usage: 1035 - 35316
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -251,7 +291,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010804400bfffc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010401400bfffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -263,7 +303,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5404
+PC address: 5415
 Estimated Gas Usage: 1063 - 35344
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -271,7 +311,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420000805400bfffc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010808010bdffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -283,15 +323,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5489
+PC address: 5500
 Estimated Gas Usage: 1091 - 35372
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010801400bfefe, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010801400bfd9c, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -303,15 +343,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5703
+PC address: 5713
 Estimated Gas Usage: 1008 - 35289
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010401400b7ffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400bfffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -323,15 +363,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5788
-Estimated Gas Usage: 1036 - 35317
+PC address: 5809
+Estimated Gas Usage: 1059 - 35340
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42041480c400bbdfc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400b7ffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -343,15 +383,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5874
+PC address: 5895
 Estimated Gas Usage: 1065 - 35346
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42001080c400bfefa, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010401400bffdc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -363,15 +403,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5959
+PC address: 5980
 Estimated Gas Usage: 1092 - 35373
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200108094007fdff, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010801400b3640, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -383,15 +423,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6044
+PC address: 6066
 Estimated Gas Usage: 1120 - 35401
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1000001, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010404420b7efc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001080440077f7f, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -403,15 +443,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6129
+PC address: 6151
 Estimated Gas Usage: 1007 - 35288
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010401400b7ffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4200108044007dffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -423,7 +463,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6214
+PC address: 6236
 Estimated Gas Usage: 1035 - 35316
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -443,15 +483,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6299
+PC address: 6321
 Estimated Gas Usage: 1063 - 35344
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010804400b5e78, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010404400bfffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -463,15 +503,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6384
+PC address: 6406
 Estimated Gas Usage: 1091 - 35372
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x20000000020001, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200108094007fffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1000002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001080140077bfe, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -483,15 +523,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6469
+PC address: 6491
 Estimated Gas Usage: 1119 - 35400
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010801400bf6de, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x4, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010800420997ac, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -503,15 +543,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6554
-Estimated Gas Usage: 1147 - 35428
+PC address: 6576
+Estimated Gas Usage: 1193 - 35474
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4200108044008dff4, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420410405420a7774, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -523,15 +563,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7003
-Estimated Gas Usage: 1109 - 35390
+PC address: 7060
+Estimated Gas Usage: 1063 - 35344
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x20, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420094804400beff4, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400b5ffe, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -543,15 +583,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7101
+PC address: 7145
 Estimated Gas Usage: 1091 - 35372
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010404400bffbe, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4208108014209577c, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -563,7 +603,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7197
+PC address: 7241
 Estimated Gas Usage: 1142 - 35423
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -571,7 +611,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010401400b094b, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4200108044009dd5b, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -583,15 +623,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 8196
+PC address: 8248
 Estimated Gas Usage: 1034 - 35315
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420010801400bfffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010804400bdffc, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -603,7 +643,7 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 8356
+PC address: 8408
 Estimated Gas Usage: 1118 - 35399
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
@@ -611,7 +651,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4210108044208f8e1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4200104014009e701, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -623,15 +663,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 8441
-Estimated Gas Usage: 1146 - 35427
+PC address: 8506
+Estimated Gas Usage: 1192 - 35473
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42001080140072c46, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x420010401400afefd, nonce:0, storage:{}
 
 Transaction Sequence:
 

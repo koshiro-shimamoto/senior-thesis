@@ -62,7 +62,7 @@ Caller: [ATTACKER], function: callme_re_ent14(), txdata: 0x1abf48c0, value: 0x0
 SWC ID: 110
 Severity: Medium
 Contract: MAIN
-Function name: gasprice_bit_ether(int128) or transferFrom(address,address,uint256)
+Function name: transferFrom(address,address,uint256) or gasprice_bit_ether(int128)
 PC address: 3787
 Estimated Gas Usage: 501 - 596
 An assertion violation was triggered.
@@ -95,7 +95,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 00000000020000000100000040000001000001000008010202000404000102200000000000000000000000000000000000000000000000000000000000000001, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 00000001010000000200040004000100000000000100000000000000040040400000000000000000000000000000000000000000000000000000000000000001, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x4ca6972a, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
@@ -115,7 +115,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 04010101010101010001010108010104010110010108010102010101010110010101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 01010101012040100201200101000101010101010104400102010104200101010101010101010101010101010101010101010101010101010101010101010180, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: buyTicket_re_ent23(), txdata: 0x501ea27d, value: 0x0
 
 ==== Transaction Order Dependence ====
@@ -135,7 +135,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 01010102040101200101014001010104010101000100000100020000000000010000000000000000000000000000000000000000000000000000000000000040, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 01010101020101010220020101000101010004000101000001200000000008000000000000000000000000000000000000000000000000000000000000000080, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: withdraw_balances_re_ent36(), txdata: 0x54611e35, value: 0x0
 
 ==== External Call To User-Supplied Address ====
@@ -144,7 +144,7 @@ Severity: Low
 Contract: MAIN
 Function name: withdrawBalance_re_ent40()
 PC address: 5525
-Estimated Gas Usage: 7273 - 61934
+Estimated Gas Usage: 7343 - 62287
 A call to a user-supplied address is executed.
 An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
 --------------------
@@ -155,7 +155,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 00000040010110040102020101010220044001041010040101100140014001800000000000000000000000000000000000000000000000000000000000000002, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 04000101010001010102010100020001040100000000010000000001000000000000000000000000000000000000000000000000000000000000000000000002, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: withdrawBalance_re_ent40(), txdata: 0x6cfd7721, value: 0x0
 
 ==== Transaction Order Dependence ====
@@ -164,7 +164,7 @@ Severity: Medium
 Contract: MAIN
 Function name: withdrawBalance_re_ent40()
 PC address: 5525
-Estimated Gas Usage: 7273 - 61934
+Estimated Gas Usage: 7343 - 62287
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -175,7 +175,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 01000001000000000001000104000102800000000000000001020001000000400000000000000000000000000000000000000000000000000000000000000002, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 00010008024004020001010002040202010404010180020120400802800000010000000000000000000000000000000000000000000000000000000000000001, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: withdrawBalance_re_ent40(), txdata: 0x6cfd7721, value: 0x0
 
 ==== State access after external call ====
@@ -184,7 +184,7 @@ Severity: Medium
 Contract: MAIN
 Function name: withdrawBalance_re_ent40()
 PC address: 5662
-Estimated Gas Usage: 7273 - 61934
+Estimated Gas Usage: 7343 - 62287
 Write to persistent state following external call
 The contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
 --------------------
@@ -195,7 +195,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 00000000200140400102010804040110010101010101040840000110010101800000000000000000000000000000000000000000000000000000000000000004, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 00000102010000000000000100000000000000000000000100000001000000000000000000000000000000000000000000000000000000000000000000000001, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: withdrawBalance_re_ent40(), txdata: 0x6cfd7721, value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
@@ -211,11 +211,31 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x10000880000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001080458000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
-Caller: [CREATOR], calldata: 01010101010101010101010102044004010101010801010101010201010801010101010101010101010101010101010101010101010101010101010101010102, decoded_data: , value: 0x0
+Caller: [CREATOR], calldata: 01022080000110010101010201011001024001010120400401010101010108010101010101010101010101010101010101010101010101010101010101010102, decoded_data: , value: 0x0
 Caller: [ATTACKER], function: bug_re_ent27(), txdata: 0x9128b348, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: MAIN
+Function name: changeOwner(address)
+PC address: 8191
+Estimated Gas Usage: 1673 - 2098
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: 01014004400102080201010810010101010102200101020140400102010101200101010101010101010101010101010101010101010101010101010101010101, decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: changeOwner(address), txdata: 0xa6f9dae10000000000000000000000000880002001000802040402400002800808000404, decoded_data: ('0x0880002001000802040402400002800808000404',), value: 0x0
 
 

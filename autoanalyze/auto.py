@@ -19,11 +19,27 @@ def extract_and_normalize_solidity_version(sol_file_path):
 
     if not raw_version:
         return (None)
+    #0.4.22の時、なんか動かんから0.5.0に変更にする
+    if raw_version.startswith(">="):
+        m_ge = re.search(r"(\d+\.\d+\.\d+)", raw_version)
+        if m_ge and m_ge.group(0) == "0.4.22" and m_ge.group(0):
+            m_lt = re.search(r"<\s*(\d+\.\d+\.\d+)", raw_version)
+            if m_lt.group(1).split(".")[1] == "5" or m_lt.group(1).split(".")[1] == "6":
+                return "0.5.0"
+            return "0.4.22"
 
     m2 = re.search(r"(\d+\.\d+\.\d+)", raw_version)
     if m2:
         return ( m2.group(1))
     return ( None)
+
+def change_version(version):
+    #0.4.5以下と0.4.15は動かんから0.4.19に変更
+    major, minor, patch = map(int, version.split('.'))
+    v = (major, minor, patch)
+    if v == (0,4,15) or v <= (0,4,5):
+        return "0.4.19"
+    return version
 
 def change_version(version):
     #0.4.5以下と0.4.15は動かんから0.4.19に変更

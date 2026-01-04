@@ -3,8 +3,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4081
-Estimated Gas Usage: 13352 - 54298
+PC address: 1929
+Estimated Gas Usage: 13696 - 54642
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -16,15 +16,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000080040100101001000400000102010004000101010000010102100001800002, decoded_data: ('0x0000000000000000000000000000000000000000', 226184058243574759107929441076237228700268052334987399459187195211059036162), value: 0x0
+Caller: [SOMEGUY], function: transfer_intou38(address,uint256), txdata: 0x7daba891aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4167
-Estimated Gas Usage: 13352 - 54298
+PC address: 3043
+Estimated Gas Usage: 14008 - 54954
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -36,15 +36,55 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000080040100101001000400000102010004000101010000010102100001800002, decoded_data: ('0x0000000000000000000000000000000000000000', 226184058243574759107929441076237228700268052334987399459187195211059036162), value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0x0000000000000000000000000000000000000000', 0), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4243
-Estimated Gas Usage: 13352 - 54298
+PC address: 4194
+Estimated Gas Usage: 13491 - 54437
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000400200800040420002080010102200800088080000020020102200102082002, decoded_data: ('0x0000000000000000000000000000000000000000', 1809472465897388321919479567696145557606172700518619798008856851778407768066), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 4291
+Estimated Gas Usage: 13491 - 54437
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000400200800040420002080010102200800088080000020020102200102082002, decoded_data: ('0x0000000000000000000000000000000000000000', 1809472465897388321919479567696145557606172700518619798008856851778407768066), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 4400
+Estimated Gas Usage: 13491 - 54437
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -56,15 +96,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa9243000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 86844066927987146567678238756515930889952488499230423029593188005934847229952), value: 0x0
+Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa9243000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa8000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 4439
-Estimated Gas Usage: 1385 - 1670
+PC address: 4573
+Estimated Gas Usage: 1362 - 1647
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -76,22 +116,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: withdraw_intou13(), txdata: 0x5c03b626, value: 0x0
+Caller: [SOMEGUY], function: withdraw_intou13(), txdata: 0x5c03b626, value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4498
-Estimated Gas Usage: 2230 - 36701
+PC address: 4632
+Estimated Gas Usage: 2207 - 36678
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x2bbc768fffffbfffc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x800004000010f8, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -103,8 +143,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4798
-Estimated Gas Usage: 13581 - 54527
+PC address: 4942
+Estimated Gas Usage: 13696 - 54642
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -116,15 +156,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000401404020022010200404108001400108010040042001080040008020014001, decoded_data: ('0x0000000000000000000000000000000000000000', 1811461681971492840454779614056839799017778383158745765266336636373232074753), value: 0x0
+Caller: [CREATOR], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000040000000000000408800240010204000101020201080000028020012000200104080220020201, decoded_data: ('0x0000000000000000000000000004000000000000', 1824269655043976436507616126605827723560774792261028358100672240959411585537), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4885
-Estimated Gas Usage: 13581 - 54527
+PC address: 5049
+Estimated Gas Usage: 13696 - 54642
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -136,15 +176,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000401404020022010200404108001400108010040042001080040008020014001, decoded_data: ('0x0000000000000000000000000000000000000000', 1811461681971492840454779614056839799017778383158745765266336636373232074753), value: 0x0
+Caller: [CREATOR], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000040000000000000408800240010204000101020201080000028020012000200104080220020201, decoded_data: ('0x0000000000000000000000000004000000000000', 1824269655043976436507616126605827723560774792261028358100672240959411585537), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 4962
-Estimated Gas Usage: 13581 - 54527
+PC address: 5136
+Estimated Gas Usage: 13696 - 54642
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -156,15 +196,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba891000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeefe000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 101318078082651670995624611882601919371611236582435493534525386006923988434944), value: 0x0
+Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba891000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef8000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6510
-Estimated Gas Usage: 14023 - 54969
+PC address: 6674
+Estimated Gas Usage: 13931 - 54877
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -176,15 +216,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000000000000400400108020108040000080004010002018004200020002000010101, decoded_data: ('0x0000000000000000000000000000000000000000', 107866116398723695254706634569085360243492410780380267918774623076609), value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000008010010804010802000840800102401020102040400020088002001004400003, decoded_data: ('0x0000000000000000000000000000000000000000', 57924321289542145399700638027536828037702190541655619304524514702412038012931), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6618
-Estimated Gas Usage: 14023 - 54969
+PC address: 6761
+Estimated Gas Usage: 13931 - 54877
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -196,15 +236,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000000000000400400108020108040000080004010002018004200020002000010101, decoded_data: ('0x0000000000000000000000000000000000000000', 107866116398723695254706634569085360243492410780380267918774623076609), value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000008010010804010802000840800102401020102040400020088002001004400003, decoded_data: ('0x0000000000000000000000000000000000000000', 57924321289542145399700638027536828037702190541655619304524514702412038012931), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6715
-Estimated Gas Usage: 14023 - 54969
+PC address: 6838
+Estimated Gas Usage: 13931 - 54877
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -216,15 +256,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou14(address,uint256), txdata: 0xaefa5519000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa8000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
+Caller: [SOMEGUY], function: transfer_intou14(address,uint256), txdata: 0xaefa5519000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadffffefc00000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 101318071073065537536458265269177996746507261436777943673976540919985323638784), value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 6821
-Estimated Gas Usage: 1782 - 2067
+PC address: 6928
+Estimated Gas Usage: 1777 - 2062
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -243,40 +283,20 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 6880
-Estimated Gas Usage: 2628 - 37099
+PC address: 6987
+Estimated Gas Usage: 2622 - 37093
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x21c10c25000b9ff2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x435a1ac25420bd60a, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [ATTACKER], function: withdraw_intou33(), txdata: 0xb1f09e89, value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 7083
-Estimated Gas Usage: 13917 - 54863
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000010000000000000000000000000401000880080408020001201008402004400404004001014080401010020801, decoded_data: ('0x0000000000000001000000000000000000000000', 1811018470560688095735991802381685774433093070992378764866908655294974396417), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -284,7 +304,7 @@ Severity: High
 Contract: MAIN
 Function name: fallback
 PC address: 7166
-Estimated Gas Usage: 13917 - 54863
+Estimated Gas Usage: 14008 - 54954
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -296,15 +316,35 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000010000000000000000000000000401000880080408020001201008402004400404004001014080401010020801, decoded_data: ('0x0000000000000001000000000000000000000000', 1811018470560688095735991802381685774433093070992378764866908655294974396417), value: 0x0
+Caller: [SOMEGUY], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000000000000000000000000000001040000402012001202020004000010401040120018001041004104080101001, decoded_data: ('0x0000000000000000000000000000000000000000', 7350083897528952868227754160732329663966967693763859889744419148503995912193), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7243
-Estimated Gas Usage: 13917 - 54863
+PC address: 7249
+Estimated Gas Usage: 14008 - 54954
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000000000000000000000000000001040000402012001202020004000010401040120018001041004104080101001, decoded_data: ('0x0000000000000000000000000000000000000000', 7350083897528952868227754160732329663966967693763859889744419148503995912193), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: fallback
+PC address: 7326
+Estimated Gas Usage: 14008 - 54954
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -316,6 +356,6 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf800000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 112173586448650064316584391727166410732855297644839296413224534507665844338688), value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeeff800000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 112173586448650064316584391727166410732855297644839296413224534507665844338688), value: 0x0
 
 

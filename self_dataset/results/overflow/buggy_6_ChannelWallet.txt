@@ -30,8 +30,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0xc, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x2773f240ffffbeffc, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x42ec2810900000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x2bff4f6fbfbffff2, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -70,13 +70,93 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x4, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x4fffffffffffffff2, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x720da040000040, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x24243846, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: _function_0x37ae6b73
+PC address: 5190
+Estimated Gas Usage: 13225 - 54171
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x20, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x37ae6b73caa3f62ac9d2da1004d3456b000000000000000000000001ffffffffffffffc0000040400004100040020801a45a04000184a5080240010002808020801080c4, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou26(address,uint256)
+PC address: 5481
+Estimated Gas Usage: 13204 - 54150
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x10, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa9243ddd175db8b79d8000000000000000000000000800000000000000000000000004040200180804002404010100002401010100080080020020010000280024001, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou26(address,uint256)
+PC address: 5562
+Estimated Gas Usage: 13204 - 54150
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x10, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: transfer_intou26(address,uint256), txdata: 0x46aa9243ddd175db8b79d8000000000000000000000000800000000000000000000000004040200180804002404010100002401010100080080020020010000280024001, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou26(address,uint256)
+PC address: 5639
+Estimated Gas Usage: 13204 - 54150
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: transfer_intou26(address,uint256), txdata: 0x46aa9243a108421874a540d4719b89ebdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef8000000000000000000000000000000000000000000000000000000000000000, value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -110,8 +190,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x20, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3fff87bf9fffffff2, nonce:0, storage:{}
+Account: [CREATOR], balance: 0xc, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0xc602dffdfffbffea, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -150,8 +230,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x44000000080000001, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x137ffffe82bfffff8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x467ffffffffffefea, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -190,13 +270,73 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x41000080400200004, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40001345c000004aa, nonce:0, storage:{}
+Account: [CREATOR], balance: 0xe, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1e4b8273408bfbff2, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x835185a4, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou14(address,uint256)
+PC address: 7949
+Estimated Gas Usage: 13180 - 54126
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa5519fafe60fbcbdbc808600000000000000000004000000000000000000000000038012010400000200200804040054a0802804a200484c040028008080824800101, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou14(address,uint256)
+PC address: 8030
+Estimated Gas Usage: 13180 - 54126
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa5519fafe60fbcbdbc808600000000000000000004000000000000000000000000038012010400000200200804040054a0802804a200484c040028008080824800101, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: transfer_intou14(address,uint256)
+PC address: 8107
+Estimated Gas Usage: 13180 - 54126
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x4, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa5519800000004208690000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef8000000000000000000000000000000000000000000000000000000000000000, value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -230,8 +370,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3fffffffffffdfff0, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x4400000000000000c, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x4040155775cf59f58, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -250,13 +390,13 @@ It is possible to cause an integer overflow or underflow in the arithmetic opera
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e80000000000000000000004000000000000000000000000000000000000000000020010020208010040104040808100440400080804028100460000100020101, value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563ec0000000000000ecb70c020100000000000000000000000000000000000001a4004020021010400840042001041e033a02760040064e2f14238c800840080239, value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -270,13 +410,13 @@ It is possible to cause an integer overflow or underflow in the arithmetic opera
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e80000000000000000000004000000000000000000000000000000000000000000020010020208010040104040808100440400080804028100460000100020101, value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563ec0000000000000ecb70c020100000000000000000000000000000000000001a4004020021010400840042001041e033a02760040064e2f14238c800840080239, value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -290,13 +430,73 @@ It is possible to cause an integer overflow or underflow in the arithmetic opera
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x4000000000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou30(address,uint256), txdata: 0xc036563e982080100000020000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe8000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+Caller: [SOMEGUY], function: transfer_intou30(address,uint256), txdata: 0xc036563edef7bbffff5ddf41307be998aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: _function_0xc1762373
+PC address: 8940
+Estimated Gas Usage: 13202 - 54148
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xc1762373bffdb2fbc635eccd570794fbffffffffffffffffffffffffffffffffffffffe0100140002001800840104008a06608322006804001a811402032405002400802, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: _function_0xc1762373
+PC address: 9020
+Estimated Gas Usage: 13202 - 54148
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0xc1762373bffdb2fbc635eccd570794fbffffffffffffffffffffffffffffffffffffffe0100140002001800840104008a06608322006804001a811402032405002400802, decoded_data: , value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: _function_0xc1762373
+PC address: 9096
+Estimated Gas Usage: 13202 - 54148
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xc1762373be80622a5ef7c00000000480affeaffeaffeaffeaffeaffeaffeaffeaffeaffe8000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
@@ -330,8 +530,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x40, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3ffbcfffffffefff4, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1b648100100, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -350,13 +550,13 @@ It is possible to cause an integer overflow or underflow in the arithmetic opera
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x4000000001000400, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd7f8581ab25f4c2a2000200000000000ffffffffffffffffffffffffffffffffffffff100101200401000004088008801204804410800402808a0860a5100820040e0201, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xd7f8581a80032114498302c0200000000000000000000000000000000000000000008001000404201002028008400002a4dc2a6e082c200204290eb00320081080102001, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -370,13 +570,13 @@ It is possible to cause an integer overflow or underflow in the arithmetic opera
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x4000000001000400, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd7f8581ab25f4c2a2000200000000000ffffffffffffffffffffffffffffffffffffff100101200401000004088008801204804410800402808a0860a5100820040e0201, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xd7f8581a80032114498302c0200000000000000000000000000000000000000000008001000404201002028008400002a4dc2a6e082c200204290eb00320081080102001, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
@@ -396,6 +596,6 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xd7f8581a201004000021240000000080affeaffeaffeaffeaffeaffeaffeaffeaffeaffe8000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xd7f8581afc98d9986519b50240000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffeffff800000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 

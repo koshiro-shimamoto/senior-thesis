@@ -1,49 +1,9 @@
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 889
-Estimated Gas Usage: 3371 - 5112
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: name(), txdata: 0x06fdde03, value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 4083
-Estimated Gas Usage: 14107 - 55053
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000028004400820040102008002102004201008, decoded_data: ('0x0000000000000000000000000000000000000000', 217786364213178519697108474044269130158088), value: 0x0
-
 ==== Exception State ====
 SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 5148
+PC address: 5067
 Estimated Gas Usage: 362 - 457
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
@@ -63,8 +23,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 5515
-Estimated Gas Usage: 1183 - 1468
+PC address: 5434
+Estimated Gas Usage: 1160 - 1445
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -83,15 +43,15 @@ SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 5574
-Estimated Gas Usage: 2028 - 36499
+PC address: 5493
+Estimated Gas Usage: 2005 - 36476
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x37ffffd2fa01245f6, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x421c10c05420ffff2, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -103,8 +63,8 @@ SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 6090
-Estimated Gas Usage: 655 - 750
+PC address: 6035
+Estimated Gas Usage: 631 - 726
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
 --------------------
@@ -123,8 +83,8 @@ SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 6866
-Estimated Gas Usage: 2259 - 8048
+PC address: 6793
+Estimated Gas Usage: 2311 - 8100
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
 --------------------
@@ -143,8 +103,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7030
-Estimated Gas Usage: 13504 - 54450
+PC address: 6937
+Estimated Gas Usage: 13481 - 54427
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -156,15 +116,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou26(address,uint256), txdata: 0x46aa9243fefefefefefefefefefefefeaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe0404040808000240022010100040000800040800028000100120040801102002, value: 0x0
+Caller: [ATTACKER], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000101004080044004202001080000200002100820000080080400800010020001, decoded_data: ('0x0000000000000000000000000000000000000000', 454081434566353178407438030521417797583918980426891620082826888041178726401), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7117
-Estimated Gas Usage: 13504 - 54450
+PC address: 7034
+Estimated Gas Usage: 13481 - 54427
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -176,15 +136,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou26(address,uint256), txdata: 0x46aa9243fefefefefefefefefefefefeaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe0404040808000240022010100040000800040800028000100120040801102002, value: 0x0
+Caller: [ATTACKER], function: transfer_intou26(address,uint256), txdata: 0x46aa924300000000000000000000000000000000000000000000000000000000000000000101004080044004202001080000200002100820000080080400800010020001, decoded_data: ('0x0000000000000000000000000000000000000000', 454081434566353178407438030521417797583918980426891620082826888041178726401), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7204
-Estimated Gas Usage: 13504 - 54450
+PC address: 7122
+Estimated Gas Usage: 13481 - 54427
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -203,8 +163,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7318
-Estimated Gas Usage: 6539 - 26824
+PC address: 7246
+Estimated Gas Usage: 6562 - 26847
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -216,15 +176,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x4d3608dd0201020101010101010108400001001010040004004080040040002040000800, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x4d3608dd0140100201010101010101010000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7325
-Estimated Gas Usage: 6539 - 26824
+PC address: 7253
+Estimated Gas Usage: 6562 - 26847
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -243,8 +203,8 @@ SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 7458
-Estimated Gas Usage: 1514 - 1799
+PC address: 7366
+Estimated Gas Usage: 1468 - 1753
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -256,22 +216,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: withdraw_intou13(), txdata: 0x5c03b626, value: 0x0
+Caller: [SOMEGUY], function: withdraw_intou13(), txdata: 0x5c03b626, value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7517
-Estimated Gas Usage: 2359 - 36830
+PC address: 7425
+Estimated Gas Usage: 2313 - 36784
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x15c7ddae0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x421810d040016df80, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -283,8 +243,8 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7717
-Estimated Gas Usage: 6730 - 27015
+PC address: 7625
+Estimated Gas Usage: 6731 - 27016
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -296,15 +256,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: increaseLockTime_intou33(uint256), txdata: 0x7d7569710108010101041001040102010000000200000000000000000000000000000000, decoded_data: (466454553914770434334282286927231240741376916913477392943184114407962574848,), value: 0x0
+Caller: [SOMEGUY], function: increaseLockTime_intou33(uint256), txdata: 0x7d7569710004010410000420022020010000000000000000000000000000000000000000, decoded_data: (7074399530250291853144181400824225971435547356054223627283817042823610368,), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7724
-Estimated Gas Usage: 6730 - 27015
+PC address: 7632
+Estimated Gas Usage: 6731 - 27016
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -316,15 +276,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: increaseLockTime_intou33(uint256), txdata: 0x7d7569710000000000000000000000000000000000000000000000000000000000000000, decoded_data: (0,), value: 0x0
+Caller: [SOMEGUY], function: increaseLockTime_intou33(uint256), txdata: 0x7d7569710000000000000000000000000000000000000000000000000000000000000000, decoded_data: (0,), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7813
-Estimated Gas Usage: 13756 - 54702
+PC address: 7721
+Estimated Gas Usage: 13779 - 54725
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -336,15 +296,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000820408000408001020880800220040400008000011000800400200400082001, decoded_data: ('0x0000000000000000000000000000000000000000', 3675487057404941164211308708762952003444696258791641506762907524202702053377), value: 0x0
+Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000110028004800800000280082008004008400400081010040480004001002002, decoded_data: ('0x0000000000000000000000000000000000000000', 480599656459505682069226383457704515340293064608931607615579741576878891010), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7910
-Estimated Gas Usage: 13756 - 54702
+PC address: 7818
+Estimated Gas Usage: 13779 - 54725
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -356,15 +316,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000820408000408001020880800220040400008000011000800400200400082001, decoded_data: ('0x0000000000000000000000000000000000000000', 3675487057404941164211308708762952003444696258791641506762907524202702053377), value: 0x0
+Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000110028004800800000280082008004008400400081010040480004001002002, decoded_data: ('0x0000000000000000000000000000000000000000', 480599656459505682069226383457704515340293064608931607615579741576878891010), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7990
-Estimated Gas Usage: 13756 - 54702
+PC address: 7908
+Estimated Gas Usage: 13779 - 54725
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -376,15 +336,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000201010420100201010101014008400202200420401020400880800180200200, decoded_data: ('0x0000000000000000000000000000000000000000', 906399557194023192043499368770906959084565688192316594013532035417513132544), value: 0x0
+Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba8910000000000000000000000000000000000000000000000000000000000000000020104081004010101011001affeaffeaffeaffeaffeaffeaffcaffe08018010, decoded_data: ('0x0000000000000000000000000000000000000000', 906420368582915445030503600228606310784452557472984214406308230108759031824), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 7997
-Estimated Gas Usage: 13756 - 54702
+PC address: 7915
+Estimated Gas Usage: 13779 - 54725
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -396,15 +356,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0x0000000000000000000000000000000000000000', 0), value: 0x0
+Caller: [CREATOR], function: transfer_intou38(address,uint256), txdata: 0x7daba89100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0x0000000000000000000000000000000000000000', 0), value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 8104
-Estimated Gas Usage: 1636 - 1921
+PC address: 8045
+Estimated Gas Usage: 1705 - 1990
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -416,22 +376,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x835185a4, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x835185a4, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 8164
-Estimated Gas Usage: 2505 - 36976
+PC address: 8104
+Estimated Gas Usage: 2550 - 37021
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x56a6fffffffffffea, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1028713d7c4003a4c, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -443,8 +403,8 @@ SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 8648
-Estimated Gas Usage: 1917 - 2342
+PC address: 8595
+Estimated Gas Usage: 1916 - 2341
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
 --------------------
@@ -463,8 +423,8 @@ SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 9582
-Estimated Gas Usage: 1267 - 1362
+PC address: 9510
+Estimated Gas Usage: 1244 - 1339
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
 --------------------
@@ -476,15 +436,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: many_msg_babbage(bytes1), txdata: 0xa9059cbb0000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f0000000000000000000000000000000000012000010001400202002008402004, value: 0x0
+Caller: [CREATOR], function: many_msg_babbage(bytes1), txdata: 0xa9059cbb0000000000000000000000000901d12ebe1b195e5aa8748e62bd7734ae19b51f0000000000000000000000000100028008400020000802084080010100000404, value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10134
-Estimated Gas Usage: 14042 - 54988
+PC address: 10063
+Estimated Gas Usage: 14019 - 54965
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -496,15 +456,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000000480802000084000201040080004020000000100000000040002200802040001, decoded_data: ('0x0000000000000000000000000000000000000000', 2036292104878775142600892955811770487762214508979654799610358767422017896449), value: 0x0
+Caller: [CREATOR], function: transfer_intou14(address,uint256), txdata: 0xaefa55190000000000000000000000000000000000000000000000000000000000000000042040014000044020801080af2001fe224c404a06ca2000af800c0001000202, decoded_data: ('0x0000000000000000000000000000000000000000', 1866232245872108612344249684835113068866599301262339339579855902395814904322), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10222
-Estimated Gas Usage: 14042 - 54988
+PC address: 10150
+Estimated Gas Usage: 14019 - 54965
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -516,15 +476,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou14(address,uint256), txdata: 0xaefa551900000000000000000000000000000000000000000000000000000000000000000480802000084000201040080004020000000100000000040002200802040001, decoded_data: ('0x0000000000000000000000000000000000000000', 2036292104878775142600892955811770487762214508979654799610358767422017896449), value: 0x0
+Caller: [CREATOR], function: transfer_intou14(address,uint256), txdata: 0xaefa55190000000000000000000000000000000000000000000000000000000000000000042040014000044020801080af2001fe224c404a06ca2000af800c0001000202, decoded_data: ('0x0000000000000000000000000000000000000000', 1866232245872108612344249684835113068866599301262339339579855902395814904322), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10299
-Estimated Gas Usage: 14042 - 54988
+PC address: 10237
+Estimated Gas Usage: 14019 - 54965
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
 --------------------
@@ -536,15 +496,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa5519000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeeff000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 108555083659983933209597798445644913612440610624038028786991485007418559037440), value: 0x0
+Caller: [ATTACKER], function: transfer_intou14(address,uint256), txdata: 0xaefa5519000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef8000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
 
 ==== Dependence on predictable environment variable ====
 SWC ID: 116
 Severity: Low
 Contract: MAIN
 Function name: fallback
-PC address: 10472
-Estimated Gas Usage: 1944 - 2229
+PC address: 10409
+Estimated Gas Usage: 1967 - 2252
 A control flow decision is made based on The block.timestamp environment variable.
 The block.timestamp environment variable is used to determine a control flow decision. Note that the values of variables like coinbase, gaslimit, block number and timestamp are predictable and can be manipulated by a malicious miner. Also keep in mind that attackers know hashes of earlier blocks. Don't use any of those environment variables as sources of randomness and be aware that use of these variables introduces a certain level of trust into miners.
 --------------------
@@ -556,22 +516,22 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: withdraw_intou33(), txdata: 0xb1f09e89, value: 0x0
+Caller: [CREATOR], function: withdraw_intou33(), txdata: 0xb1f09e89, value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10531
-Estimated Gas Usage: 2789 - 37260
+PC address: 10469
+Estimated Gas Usage: 2813 - 37284
 Any sender can withdraw Ether from the contract account.
 Arbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.
 --------------------
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x367f87f7d227efff8, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x63c75e3f38ff85e0, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -583,7 +543,7 @@ SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10720
+PC address: 10647
 Estimated Gas Usage: 14107 - 55053
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -596,14 +556,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000fe0000000000000800000000000000000000002002000110800001102004044002200040202000000108000000010840800002, decoded_data: ('0x00fe000000000000080000000000000000000000', 14477544877491680682959860183989322926452548728890102722801570179933517381634), value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe800108000480400108000110083e010081eca910400440020040010820040402, decoded_data: ('0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe', 57897866680167658583641976757602875422870002568634146017572817260309721121794), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10807
+PC address: 10734
 Estimated Gas Usage: 14107 - 55053
 The arithmetic operator can underflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -616,14 +576,14 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e00000000000000000000000000fe0000000000000800000000000000000000002002000110800001102004044002200040202000000108000000010840800002, decoded_data: ('0x00fe000000000000080000000000000000000000', 14477544877491680682959860183989322926452548728890102722801570179933517381634), value: 0x0
+Caller: [ATTACKER], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe800108000480400108000110083e010081eca910400440020040010820040402, decoded_data: ('0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe', 57897866680167658583641976757602875422870002568634146017572817260309721121794), value: 0x0
 
 ==== Integer Arithmetic Bugs ====
 SWC ID: 101
 Severity: High
 Contract: MAIN
 Function name: fallback
-PC address: 10884
+PC address: 10811
 Estimated Gas Usage: 14107 - 55053
 The arithmetic operator can overflow.
 It is possible to cause an integer overflow or underflow in the arithmetic operation. 
@@ -636,15 +596,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa8000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 57896044618658097711785492504343953926634992332820282019728792003956564819968), value: 0x0
+Caller: [CREATOR], function: transfer_intou30(address,uint256), txdata: 0xc036563e000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffec000000000000000000000000000000000000000000000000000000000000000, decoded_data: ('0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe', 86844066927987146567678238756515930889952488499230423029593188005934847229952), value: 0x0
 
 ==== Exception State ====
 SWC ID: 110
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 10993
-Estimated Gas Usage: 2091 - 2516
+PC address: 10920
+Estimated Gas Usage: 2137 - 2562
 An assertion violation was triggered.
 It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
 --------------------
@@ -656,6 +616,6 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: setPauseStatus(bool), txdata: 0xc38bb5370000000000000000000000000000000000000000000000000000000000000000, decoded_data: (False,), value: 0x0
+Caller: [SOMEGUY], function: setPauseStatus(bool), txdata: 0xc38bb537000000000000000000000000aaaaaa0000000000000000000000000000000000, value: 0x0
 
 

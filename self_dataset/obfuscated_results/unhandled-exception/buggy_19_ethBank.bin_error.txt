@@ -1,0 +1,86 @@
+C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\plugin\discovery.py:3: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+[34mmythril.mythril.mythril_analyzer[0m [1;30m[CRITICAL]:[0m [1;31mException occurred, aborting analysis. Please report this issue to the Mythril GitHub page.
+Traceback (most recent call last):
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\mythril\mythril_analyzer.py", line 153, in fire_lasers
+    sym = SymExecWrapper(
+        contract,
+    ...<11 lines>...
+        custom_modules_directory=self.custom_modules_directory,
+    )
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\analysis\symbolic.py", line 197, in __init__
+    self.laser.sym_exec(
+    ~~~~~~~~~~~~~~~~~~~^
+        creation_code=contract.creation_code,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        contract_name=contract.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        world_state=world_state,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\svm.py", line 206, in sym_exec
+    self.execute_transactions(created_account.address)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\svm.py", line 232, in execute_transactions
+    self._execute_transactions_incremental(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        address, txs=args.transaction_sequences
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\svm.py", line 304, in _execute_transactions_incremental
+    execute_message_call(self, address, func_hashes=func_hashes)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\transaction\symbolic.py", line 148, in execute_message_call
+    laser_evm.exec()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\svm.py", line 345, in exec
+    new_states, op_code = self.execute_state(global_state)
+                          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\svm.py", line 446, in execute_state
+    ).evaluate(global_state)
+      ~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\instructions.py", line 261, in evaluate
+    result = instruction_mutator(global_state)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\instructions.py", line 192, in wrapper
+    new_global_states = self.call_on_state_copy(func, func_obj, global_state)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\instructions.py", line 126, in call_on_state_copy
+    global_state_copy = copy(state)
+  File "C:\Python313\Lib\copy.py", line 80, in copy
+    return copier(x)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\state\global_state.py", line 69, in __copy__
+    world_state = copy(self.world_state)
+  File "C:\Python313\Lib\copy.py", line 80, in copy
+    return copier(x)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\state\world_state.py", line 76, in __copy__
+    new_world_state.put_account(copy(account))
+                                ~~~~^^^^^^^^^
+  File "C:\Python313\Lib\copy.py", line 80, in copy
+    return copier(x)
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\state\account.py", line 218, in __copy__
+    new_account = Account(
+        address=self.address,
+    ...<4 lines>...
+        nonce=self.nonce,
+    )
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\state\account.py", line 136, in __init__
+    self.storage = Storage(
+                   ~~~~~~~^
+        concrete_storage, address=self.address, dynamic_loader=dynamic_loader
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\ethereum\state\account.py", line 27, in __init__
+    self._standard_storage: BaseArray = K(256, 256, 0)
+                                        ~^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\mythril\laser\smt\array.py", line 74, in __init__
+    self.raw = z3.K(self.domain, self.value)
+               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\z3\z3.py", line 4918, in K
+    return ArrayRef(Z3_mk_const_array(ctx.ref(), dom.ast, v.as_ast()), ctx)
+                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\koshiro\AppData\Roaming\Python\Python313\site-packages\z3\z3core.py", line 2296, in Z3_mk_const_array
+    r = _elems.f(a0, a1, a2)
+OSError: exception: access violation reading 0x00000000000059DC
+[0m

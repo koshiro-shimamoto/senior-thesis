@@ -11,7 +11,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x2000000000342, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x6, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -112,7 +112,7 @@ External calls return a boolean value. If the callee halts with an exception, 'f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x1000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -137,7 +137,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa5d5d5d5d5d5d5d5d5d5d5d5dd7ec5d8697e4c83dc33d781d19dc2910fb165d5c5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d5d, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa33333333333333333333333376535ca5bf1d33434a302e5a464df433bb1f80f633333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
@@ -152,12 +152,12 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x40020100000440, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x28340, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x434fa4aa000000000000000000000000d7ec5d8697e4c83dc33d781d19dc2910fb165d5c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
 
 ==== External Call To User-Supplied Address ====
 SWC ID: 107
@@ -171,13 +171,13 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x41004000000000000, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0x550c16d4000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x550c16d4000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
@@ -191,13 +191,13 @@ External calls return a boolean value. If the callee halts with an exception, 'f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x1000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x20, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x550c16d4000000000000000000000000071f73f4d0befd4406901aace6d5ffd6d297c561, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x550c16d400000000000000000000000020020000000000000000000000020000af800401, decoded_data: , value: 0x0
 
 ==== Unchecked return value from external call. ====
 SWC ID: 104
@@ -217,7 +217,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: unknown, txdata: 0x58dbb19c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x58dbb19c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
@@ -232,7 +232,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x2880020c00005100, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1000004800008220, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -257,7 +257,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x7bf98cbf070707070707070707070707071f73f4d0befd4406901aace6d5ffd6d297c561, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x7bf98cbf0000000000000000000000000000000000000000000000000000000080000140, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
@@ -272,7 +272,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3cac, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x48290, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -291,13 +291,13 @@ External calls return a boolean value. If the callee halts with an exception, 'f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x3, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x8bd3d0d7000000000000000000000000d7ec5d8697e4c83dc33d781d19dc2910fb165d5c, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0x8bd3d0d7000000000000000000000000d7ec5d8697e4c83dc33d781d19dc2910fb165d5c, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
@@ -357,7 +357,7 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: unknown, txdata: 0xcf43199b33333333333333333333333376535ca5bf1d33434a302e5a464df433bb1f80f6, decoded_data: , value: 0x0
+Caller: [CREATOR], function: unknown, txdata: 0xcf43199b070707070707070707070707071f73f4d0befd4406901aace6d5ffd6d297c561, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
 SWC ID: 105
@@ -372,7 +372,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 Initial State:
 
 Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x18000c010, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x8888, nonce:0, storage:{}
 
 Transaction Sequence:
 

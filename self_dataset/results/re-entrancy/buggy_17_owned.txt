@@ -30,14 +30,14 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x4045894a829940000, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x100326000001020, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x20400810214d4000, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
 Caller: [ATTACKER], function: bug_re_ent20(), txdata: 0xd8fa982f, value: 0x0
-Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bfafafafafafafafafafafafa4001400801800200804008402002408004100104, value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bfafafafafafafafafafafafa0001200401801010028004081000010280800240, value: 0x0
 Caller: [ATTACKER], function: unknown, txdata: 0x70029fa8, decoded_data: , value: 0x0
 
 ==== Unprotected Ether Withdrawal ====
@@ -52,12 +52,13 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x5644e12cc58400000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x404480050800000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x3427590058d80000, nonce:0, storage:{}
 
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38bafafafafafafafafafafafafaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe, value: 0x0
 Caller: [CREATOR], function: transferOwnership(address), txdata: 0xf2fde38b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b, value: 0x0
 Caller: [ATTACKER], function: bug_re_ent20(), txdata: 0xd8fa982f, value: 0x0
 

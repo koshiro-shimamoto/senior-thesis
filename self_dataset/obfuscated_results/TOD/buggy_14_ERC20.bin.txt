@@ -1,50 +1,10 @@
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 849
-Estimated Gas Usage: 7379 - 28672
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [SOMEGUY], function: approve(address,uint256), txdata: 0x095ea7b300000000000000808080000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, value: 0x0
-
-==== Integer Arithmetic Bugs ====
-SWC ID: 101
-Severity: High
-Contract: MAIN
-Function name: fallback
-PC address: 2345
-Estimated Gas Usage: 15010 - 56683
-The arithmetic operator can underflow.
-It is possible to cause an integer overflow or underflow in the arithmetic operation. 
---------------------
-Initial State:
-
-Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
-
-Transaction Sequence:
-
-Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [CREATOR], function: many_msg_babbage(bytes1), txdata: 0xa9059cbb00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000, value: 0x0
-
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 2955
-Estimated Gas Usage: 8663 - 63604
+PC address: 2878
+Estimated Gas Usage: 8640 - 63581
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -63,8 +23,8 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 3146
-Estimated Gas Usage: 8885 - 63826
+PC address: 3068
+Estimated Gas Usage: 8701 - 63642
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -76,15 +36,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x1b92061d0000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1b92061d0000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 3354
-Estimated Gas Usage: 8752 - 63693
+PC address: 3223
+Estimated Gas Usage: 8724 - 63665
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -96,15 +56,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x1d70a2110000000000000000000000000000000000000000000000000000000000000001, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x1d70a2110000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 4194
-Estimated Gas Usage: 8841 - 63782
+PC address: 4088
+Estimated Gas Usage: 8887 - 63828
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -116,15 +76,15 @@ Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 Transaction Sequence:
 
 Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
-Caller: [ATTACKER], function: unknown, txdata: 0x2e0c33570000000000000000000000000000000000000000000000000000000000000008, decoded_data: , value: 0x0
+Caller: [ATTACKER], function: unknown, txdata: 0x2e0c33570000000000000000000000000000000000000000000000000000000000000000, decoded_data: , value: 0x0
 
 ==== Transaction Order Dependence ====
 SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 6292
-Estimated Gas Usage: 9251 - 64192
+PC address: 6201
+Estimated Gas Usage: 9228 - 64169
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -143,8 +103,8 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 7994
-Estimated Gas Usage: 9508 - 64449
+PC address: 7966
+Estimated Gas Usage: 9486 - 64427
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
@@ -163,8 +123,8 @@ SWC ID: 114
 Severity: Medium
 Contract: MAIN
 Function name: fallback
-PC address: 8666
-Estimated Gas Usage: 9620 - 64561
+PC address: 8627
+Estimated Gas Usage: 9597 - 64538
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------

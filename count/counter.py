@@ -34,11 +34,13 @@ def main():
     for before_file in sorted(args.before_dir.iterdir()):
         if "error" in before_file.name:
             continue
+        print(f"[INFO] Processing file: {before_file.name}")
         if not before_file.is_file() or not before_file.name.endswith(".txt"):
             continue
 
         after_file = args.after_dir / before_file.name.replace(".txt", ".bin.txt")
         if not after_file.exists():
+            print(f"[WARN] 対応する after ファイルが見つかりません: {after_file}")
             continue
 
         before_counts = collect_swc_from_file(before_file)

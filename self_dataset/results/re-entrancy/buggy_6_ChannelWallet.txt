@@ -50,8 +50,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x11800800800000000, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420800c0142080000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x421001c0142080000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -90,7 +90,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1000000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x1000100000002, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -130,7 +130,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -150,7 +150,7 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -170,7 +170,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x41000000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x880020020021, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -190,7 +190,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x800000000002, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x4080020002, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -210,7 +210,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x21, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -224,13 +224,13 @@ Severity: Low
 Contract: MAIN
 Function name: withdrawBalance_re_ent26()
 PC address: 5941
-Estimated Gas Usage: 7022 - 61683
+Estimated Gas Usage: 7092 - 62036
 A call to a user-supplied address is executed.
 An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x4000010100000002, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40200000000000004, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -244,13 +244,13 @@ Severity: Medium
 Contract: MAIN
 Function name: withdrawBalance_re_ent26()
 PC address: 5941
-Estimated Gas Usage: 7022 - 61683
+Estimated Gas Usage: 7092 - 62036
 The value of the call is dependent on balance or storage write
 This can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x50000000000040800, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x8001, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -264,13 +264,13 @@ Severity: Medium
 Contract: MAIN
 Function name: withdrawBalance_re_ent26()
 PC address: 6076
-Estimated Gas Usage: 7022 - 61683
+Estimated Gas Usage: 7092 - 62036
 Write to persistent state following external call
 The contract account state is accessed after an external call to a user defined address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x481000010080001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40000000000000004, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -290,7 +290,7 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2000400008300044, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2000000000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x42001040140000000, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -310,7 +310,7 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x40000000000002, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2000000000000002, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -330,7 +330,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x5000000060092, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x80040000000084, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -350,7 +350,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x80000000018902, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40000082, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -370,7 +370,7 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x6000000000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2a00494000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -390,8 +390,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42201040440040000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x30400000000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40100884448000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -410,7 +410,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x21080000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x8e2000000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -430,7 +430,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x21080000000000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x8e2000000000000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -450,7 +450,7 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2000000000000002, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -470,7 +470,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x40001000000010001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x41200000000001, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -490,7 +490,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x200000102, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -510,8 +510,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42001040061040000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40004600400000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001040440040000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -530,7 +530,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x40, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x400000001, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -550,7 +550,7 @@ An external message call to an address specified by the caller is executed. Note
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x400020c0000000001, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x40002000000001, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -570,7 +570,7 @@ This can lead to race conditions. An attacker may be able to run a transaction a
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x200, nonce:0, storage:{}
+Account: [CREATOR], balance: 0xc0000, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -590,7 +590,7 @@ The contract account state is accessed after an external call to a user defined 
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x10080000000010802, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x42000002000000001, nonce:0, storage:{}
 Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
 
 Transaction Sequence:
@@ -610,8 +610,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x20000000000a0041, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x42001080140000000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x2, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x42001080440000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
@@ -650,8 +650,8 @@ Arbitrary senders other than the contract creator can profitably extract Ether f
 --------------------
 Initial State:
 
-Account: [CREATOR], balance: 0x401c0000001000484, nonce:0, storage:{}
-Account: [ATTACKER], balance: 0x420000c0142080000, nonce:0, storage:{}
+Account: [CREATOR], balance: 0x400b0000000000002, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40101000100000000, nonce:0, storage:{}
 
 Transaction Sequence:
 
