@@ -102,7 +102,7 @@ class Obfuscator:
                     self.contract.update_pc() #need to update pc after each addings of bytecodes
 
                 #TODO: bug at ADD obfuscation
-                elif name == "ADD" and not is_opcode_list_obfuscated(self.contract.opcode[i:i+len(pattern)]) and self.obf_type in ("full","add") and random.randint(1,3) == 1:                    
+                elif name == "ADD" and not is_opcode_list_obfuscated(self.contract.opcode[i:i+len(pattern)]) and self.obf_type in ("full","addmanip") and random.randint(1,3) == 1:                    
                     print(f"Applying ADD Opcode Stack Manipulation...")
                     set_obf_attr_to_true(instanciated_pattern)
                     original_bytes = get_opcode_list_byte_length(self.contract.opcode[i:i+len(pattern)])

@@ -1,0 +1,117 @@
+\documentclass[a4paper,10pt]{jarticle}
+\usepackage[dvipdfm,text={160mm,240mm},centering]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath, ascmac}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage[dvipdfmx]{color}
+\usepackage{comment}
+\usepackage{pdfpages}
+%\usepackage{eclbkbox}
+%\usepackage{itembkbx}
+\usepackage{float}
+
+\topmargin=-2.2cm
+\headheight=0.5cm
+\headsep=0.8cm
+\oddsidemargin=0.2cm
+\evensidemargin=-0.9cm
+\textheight=25cm
+\textwidth=16.7cm
+\footskip=1.8cm
+\columnsep=0.8cm
+\parindent=1.0em
+%\def\baselinestretch{1.1}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 表紙
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\onecolumn
+
+\begin{center}
+
+\vspace*{50mm}
+\textbf{\Huge{情報科学研究科 卒業論文}}\\
+\vspace*{60mm}
+\Large{
+\begin{tabular}{rl}
+氏名：&島本幸司朗\\
+学籍番号：&09B22043\\
+所属：&情報システム科土屋研究室\\
+提出日：&2026年2月9日\\
+\end{tabular}
+}
+\end{center}
+\newpage
+
+
+\section{設計した C-Processor のデータパスアーキテクチャ図を示し，Tiny-Processor のデータパスから
+の変更点について説明せよ．}
+%データパスを図で示し，それについてTiny-ProcessorとC-Processorとの違いを説明する．
+%可能であれば，追加したレジスタやマルチプレクサについて，なぜ，それらが必要になるのかについて%記述する．
+
+以下に設計したC-Processorのデータパス図を掲載する。
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=.65\textwidth]{cprocessor.png}
+ \caption{C-Processorのデータパス図}
+ \label{gurafu6}
+\end{figure}
+C-ProcessorとTiny-Processorの違いは主に四点である。ALUの機能の増加、即値を格納するレジスタCの追加、キャリーフラグを管理するレジスタFCの追加、出力を行うレジスタを決定するマルチプレクサの追加である。順に必要となった理由を解説する。そのために必要なC-Processorの命令セットの一覧を掲載する。
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=.65\textwidth]{meirei.png}
+ \caption{C-Processorの命令セット}
+ \label{gurafu6}
+\end{figure}
+ALU機能はTiny-Processorの場合、加算、インクリメント、デクリメントのみ可能であった。一方、C-Processorでは命令セットのADDAからCMPと減算や論理演算を行う必要があるため機能の拡張が必要である。この拡張作業は課題1で実現している。続いてC-ProcessorではレジスタCが追加されている。これは即値を指定番地へ格納するSTDI命令を実現するためにある。レジスタA、BはSTDA、STDB命令や演算命令で使用するため、STDI命令を行うときに使用してしまうと演算結果を損失する可能性があるため使用することはできない。そのため即値を格納するためのレジスタCが必要である。Tiny-Processorでは演算によるオーバーフローを考慮しなかったが、C-Processorではオーバーフローも考慮している。そのため演算でオーバーフローが発生したときのフラグの値を格納するレジスタFCが必要になる。そのためALUのcoutに対してレジスタFCが接続されている。さらにTiny-Processorではレジスタの内容を出力するときにはレジスタAを使用する必要があったが、C-ProcessorではレジスタA、B、Cの三つのレジスタからそのまま出力を行う事ができる。そのためどのレジスタの内容を出力するのか決定するマルチプレクサが必要となる。MuxDOutがそのためのマルチプレクサである。
+~\\
+\section{STDI命令のデータの流れについて，1.で示した図上にわかるように矢印を書き込んだ上で説明せよ．}
+%前節で示した，図に対して，STDI命令を実行した際に，どの様にデータが流れているかを説明する．
+以下にSTDI命令のデータパスの流れを掲載する。
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=.75\textwidth]{stdimeirei.png}
+ \caption{STDI命令のデータパスの流れ}
+ \label{gurafu6}
+\end{figure}
+STDI命令はオペランドで指定された即値をIX番地に格納する命令である。そのためDataInから流れた即値は一時的にレジスタCに格納する。マルチプレクサMuxDInでDataInを選択し、loadRegCフラグを1にすることでレジスタCに格納する。その後、マルチプレクサMuxDOutでレジスタCを選択しレジスタCの内容をDataOutに流す。それと同時にIXレジスタから現在のIXが指す番地の値をMuxAddrに出力する。さらにマルチプレクサMuxAddrでレジスタIXからの入力を選択することでAddressとしてIX番地が指定される。これによりIX番地にオペランドの内容が格納されSTDI命令が実現される。
+~\\
+\section{C-Processor の外部出力信号用ジョンソンカウンタと内部制御信号用ジョンソンカウンタを示せ．}
+%設計に用いた外部出力信号のジョンソンカウンタと内部制御信号のジョンソンカウンタを示し，それぞれ説明する．
+続いてC-Processorの外部出力信号用ジョンソンカウンタと内部制御信号用ジョンソンカウンタの解説を行う。
+\subsection{外部出力信号用ジョンソンカウンタ}
+はじめに外部出力信号用ジョンソンカウンタについて解説を行う。以下に外部信号用ジョンソンカウンタを掲載する。
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=.75\textwidth]{gaibu.png}
+ \caption{外部信号用ジョンソンカウンタ}
+ \label{gurafu6}
+\end{figure}
+外部信号用ジョンソンカウンタは五つのジョンソンカウンタで構成されており、それぞれの役割について順に解説していく。\\
+JCextAは読み込み命令である/readのみについてのジョンソンカウンタである。cJCextAフラグが1になると状態s1へ移行し、/readがLになる。このジョンソンカウンタはfetch、SETIX、LDI、JP命令に関係している。JCextBはIXをアドレスへ流すselMuxAddrと/readに関係するジョンソンカウンタである。cJCextBが1になると状態s2へ移行し、selMuxAddrがHに、/readがLになる。このジョンソンカウンタはLDD命令に関係している。JCextCはselMuxAddrと書き込み命令である/writeに関係するジョンソンカウンタである。cJCxetCフラグの値によってそれぞれの値が変化する。このジョンソンカウンタはSTDA命令に関係している。JCxetDはどのレジスタを出力するのかを決定するselMuxDOutとselMuxAddr、/writeに関係するジョンソンカウンタである。cJCextDフラグの値によってそれぞれの値が変化する。このジョンソンカウンタはSTDB命令に関係している。JCextEはselMuxAddr、sselMuxDOut、/write、/readすべてに関係するジョンソンカウンタである。cJCextEフラグの値によってそれぞれの値が変化する。このジョンソンカウンタはSTDI命令に関係している。これら五つのジョンソンカウンタが対応する命令に対して動作することで外部信号が変化する。\\
+\subsection{内部制御信号用ジョンソンカウンタ}
+続いて内部制御信号用ジョンソンカウンタについて解説を行う。以下に内部制御信号用ジョンソンカウンタを掲載する。
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=.75\textwidth]{naibu.png}
+ \caption{内部制御信号用ジョンソンカウンタ}
+ \label{gurafu6}
+\end{figure}
+内部制御信号用ジョンソンカウンタは六つのジョンソンカウンタで構成されており、それぞれの役割について順に解説していく。内部制御信号用ジョンソンカウンタは外部出力信号用ジョンソンカウンタがうまく動作するようにcJCextの値を制御し、さらに内部信号も制御するジョンソンカウンタである。\\
+JCintAはreset状態と動作状態をコントロールするジョンソンカウンタである。cactフラグによってどちらの状態にいるのかを決定する。JCintBはfetchに対するジョンソンカウンタである。fetchの各状態に対してcs1、loadIR、incIP、CJextA,B,C,D,Eの値がHになる。JCintCはSETIX、LDD、LDI命令に関係している。初期状態を合わせて四つの状態があるが四つ目の状態はジョンソンカウンタを成立させるための空の状態である。cJCintCフラグの値によって状態が変化し、selMuxDIn、incIP、loadhIX、loadlIX、loadRegA、loadRegB、cJCextA、cs2の値が状態にあわせてHになる。JCintDはalu、JPZ(Z=0)、JPC(C=0)、NOP命令に関係している。cJCintDフラグの値によって状態が変化し、cJCextA、loadFZ、loadFC、modeALU、loadRegA、loadRegB、inc2IPの値が状態にあわせてHになる。cJCintEはSTDA、STDB命令に関係している。cJCintEフラグの値によって状態が変化し、cJCextAの値が状態にあわせてHになる。cJCintFはJP、JPZ(Z=1)、JPC(C=1)、STDI命令に関係している。cJCintFフラグの値によって状態が変化し、selMuxDIn、loadhMB、loadlMB、cs1、cJCextA、incIP、loadRegCの値が状態に合わせてHになる。これら六つのジョンソンカウンタによって内部制御信号を操作している。
+
+~\\
+\section{C-Processor の設計にあたって工夫した点やアピールする点があれば，章立てて報告すること．拡張課題についても同様．}
+%C-Processorの設計にあたって，何かしらの工夫を行なったことがあれば，記述する．
+\subsection{アセンブリ}
+C-Processorの設計で動作確認を行うためのmemory.txtを作成するアセンブリの設計について工夫点を述べる。pythonを用いてコードを作成し、SETIXの場合はSETIXHとSETIXLに分けることができる。また、命令の隣に\#から始まるコメントを残した場合memory.txtに変換する際に削除するようにしている。
+\section{感想 (C-Processorの設計は易しかった／難しかったか？ソフトウェアプログラミングとの違いは感じたか？疑問に思ったこと，授業でもっとフォローして欲しいこと，など)}
+C-Processorの設計においてはじめの課題では一部分の動作についてのみ行っており、全貌が見えなかったが課題7以降になるとC-Processor全体の動作を確認していた。課題7以降はどのような動作が行われているのかwaveなどを用いて確認することが出来、楽しみながら実験を行うことができた。
+\end{document}

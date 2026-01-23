@@ -1,0 +1,101 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: name()
+PC address: 704
+Estimated Gas Usage: 3409 - 5150
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: name(), txdata: 0x06fdde03, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: checkMintSolution(uint256,bytes32,bytes32,uint256)
+PC address: 2000
+Estimated Gas Usage: 861 - 1991
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: checkMintSolution(uint256,bytes32,bytes32,uint256), txdata: 0x81269a56000000000000000000000000000000000000400000000000001000000000000080208000020002080040001008100000001080800040008080000080800408008010800108800008800220801080808020400110804020004080804000000400ffffffffa0020202400080100400100000800110200410082001800000804001, decoded_data: (1298074214633706911636223709675520, '8020800002000208004000100810000000108080004000808000008080040800', '8010800108800008800220801080808020400110804020004080804000000400', 115792089227207041403667771025201953095985418014243876515231730969273578831873), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: checkMintSolution(uint256,bytes32,bytes32,uint256)
+PC address: 2020
+Estimated Gas Usage: 861 - 1991
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: checkMintSolution(uint256,bytes32,bytes32,uint256), txdata: 0x81269a56000000000000000000000000000000000000000000000000000000000000000002804000000140008000040000010010808000020040008080008000800000200400020404004000004020012020100000204040000800800001400140108040ffffffffa0080080010000001080104002000000404008400402000840080800, decoded_data: (0, '0280400000014000800004000001001080800002004000808000800080000020', '0400020404004000004020012020100000204040000800800001400140108040', 115792089227209507235997679556015278890013415786317615724984208111556589258752), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: getMintDigest(uint256,bytes32)
+PC address: 2606
+Estimated Gas Usage: 772 - 1902
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: getMintDigest(uint256,bytes32), txdata: 0x9e37273b00000000000000800800800200000000000000000000000000000000000000000008000080808080200020000102200000800001800000200080000080200204, decoded_data: (803665229452134626878539544124808508949199249623945352052736, '0008000080808080200020000102200000800001800000200080000080200204'), value: 0x0
+
+==== External Call To User-Supplied Address ====
+SWC ID: 107
+Severity: Low
+Contract: MAIN
+Function name: transferAnyERC20Token(address,uint256)
+PC address: 9009
+Estimated Gas Usage: 3886 - 39579
+A call to a user-supplied address is executed.
+An external message call to an address specified by the caller is executed. Note that the callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behaviour. Make sure that no state modifications are executed after this call and/or reentrancy guards are in place.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: transferAnyERC20Token(address,uint256), txdata: 0xdc39d06d000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef0000000000000000000000000000000000000000000000000000002001000820, decoded_data: ('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', 137455732768), value: 0x0
+
+

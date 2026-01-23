@@ -20,7 +20,7 @@ def analyze_evmcode_file(filepath):
     return contract
 
 def write_to_file(contract, obf_type):
-    obfuscated_dir = os.path.join('resources', 'obfuscated')#, obf_type)
+    obfuscated_dir = os.path.join('resources', 'obfuscated')
     if not os.path.exists(obfuscated_dir):
         os.makedirs(obfuscated_dir)
     file_path = os.path.join(obfuscated_dir, contract.name + '.obf')
@@ -41,7 +41,7 @@ def choose_file():
 def choose_obfuscation_type(auto=False):
     if auto:
         return "full"
-    obf_types = ["full"]#, "addmanip", "funcsigtransfo", "spamjumpdest", "jumptransfo"]
+    obf_types = ["full", "addmanip", "funcsigtransfo", "spamjumpdest", "jumptransfo"]
     questions = [
         inquirer.List('obf_type',
                       message="Choose obfuscation methods to apply",

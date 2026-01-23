@@ -1,0 +1,21 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: MAIN
+Function name: many_msg_babbage(bytes1) or transfer(address,uint256)
+PC address: 710
+Estimated Gas Usage: 14380 - 56053
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: many_msg_babbage(bytes1), txdata: 0xa9059cbb000000000000000000000000deacbc001ea0b2004800802582009e01000000050000000000000000000000000000000000000000000000000000000000000000, value: 0x0
+
+

@@ -133,6 +133,9 @@ class Contract:
         for pc, opcode in pc_opcode.items():
             opcode.pc = hex(pc)[2:]
         self.opcode = self.opcode
+        for i,op in enumerate(self.opcode):
+            print(i, op.__class__.__name__)
+
 
     def get_full_bytecode(self):
         """

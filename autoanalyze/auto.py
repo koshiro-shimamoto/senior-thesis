@@ -195,12 +195,13 @@ def main():
             "analyze",
             "-f",
             bin_path,
-            "-t", "3",
+            "-t", "8",
             "--execution-timeout", "180"
         ]
 
         # Mythril 実行
         print(f"  Running Mythril...:{bin_path}")
+        print(" ".join(cmd))
         result = subprocess.run(cmd, capture_output=True, text=True)
 
         # 通常出力 → txt
